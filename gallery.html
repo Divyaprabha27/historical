@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Historical Reenactment Group</title>
+    <meta name="description" content="View our historical reenactment photos and videos from past events">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span>Historical Guild</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home1</a></li>
+                            <li><a class="dropdown-item" href="home2.html">Home2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="members.html" class="nav-link">Members</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="header-buttons">
+                        <a href="dashboard.html" class="btn btn-secondary">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 50vh; padding: 6rem 0 4rem 0; display: flex; align-items: center; justify-content: center;">
+        <div class="container">
+            <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                <h1 class="hero-title animate-on-scroll" style="font-size: 3rem; margin-bottom: 1.5rem; margin-top: 2rem; color: var(--accent-gold);">Gallery</h1>
+                <p class="hero-subtitle animate-on-scroll" style="font-size: 1.3rem; margin-bottom: 2rem; color: var(--bg-parchment); opacity: 0.95;">Journey through time with our collection of historical reenactments and events</p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="events.html" class="btn-hero" style="padding: 1rem 2rem; font-size: 1.1rem; margin: 0 0.5rem;">View Events</a>
+                    <a href="register.html" class="btn-hero" style="padding: 1rem 2rem; font-size: 1.1rem; margin: 0 0.5rem;">Join Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-3d p-4">
+                        <h3 class="text-center mb-4">Filter Gallery</h3>
+                        <div class="d-flex flex-wrap justify-content-center gap-2" id="galleryFilters">
+                            <button class="btn btn-primary active" data-category="all">All Photos</button>
+                            <button class="btn btn-secondary" data-category="medieval">Medieval</button>
+                            <button class="btn btn-secondary" data-category="roman">Roman</button>
+                            <button class="btn btn-secondary" data-category="viking">Viking</button>
+                            <button class="btn btn-secondary" data-category="renaissance">Renaissance</button>
+                            <button class="btn btn-secondary" data-category="ancient">Ancient</button>
+                            <button class="btn btn-secondary" data-category="colonial">Colonial</button>
+                            <button class="btn btn-secondary" data-category="victorian">Victorian</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Gallery Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-grid" id="mainGallery">
+                <!-- Medieval Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="medieval" style="grid-column: span 2; grid-row: span 2;">
+                    <img src="https://picsum.photos/seed/medieval-battle-cavalry/600/600.jpg" class="gallery-image" alt="Medieval Battle Cavalry">
+                    <div class="gallery-overlay">
+                        <h4>Medieval Cavalry Charge</h4>
+                        <p>Annual Tournament 2025 - The thundering charge of armored knights</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> March 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Sherwood Forest</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="medieval">
+                    <img src="https://picsum.photos/seed/medieval-knight-armor/400/300.jpg" class="gallery-image" alt="Knight in Full Armor">
+                    <div class="gallery-overlay">
+                        <h4>Knight's Armor</h4>
+                        <p>Meticulously crafted 12th century plate armor</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> March 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="medieval">
+                    <img src="https://picsum.photos/seed/medieval-archery/400/300.jpg" class="gallery-image" alt="Medieval Archery">
+                    <div class="gallery-overlay">
+                        <h4>Medieval Archery</h4>
+                        <p>Longbow demonstration and competition</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> March 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="medieval" style="grid-column: span 2;">
+                    <img src="https://picsum.photos/seed/medieval-feast-hall/600/300.jpg" class="gallery-image" alt="Medieval Feast Hall">
+                    <div class="gallery-overlay">
+                        <h4>Medieval Feast Hall</h4>
+                        <p>Authentic medieval banquet with period entertainment</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> May 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Castle Hill</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roman Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="roman" style="grid-column: span 2;">
+                    <img src="https://picsum.photos/seed/roman-legion-formation/600/300.jpg" class="gallery-image" alt="Roman Legion Formation">
+                    <div class="gallery-overlay">
+                        <h4>Roman Testudo Formation</h4>
+                        <p>Imperial legion demonstrating the famous turtle formation</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> April 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Heritage Valley</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="roman">
+                    <img src="https://picsum.photos/seed/roman-centurion/400/300.jpg" class="gallery-image" alt="Roman Centurion">
+                    <div class="gallery-overlay">
+                        <h4>Centurion Command</h4>
+                        <p>Roman military leadership and tactics</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> April 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="roman">
+                    <img src="https://picsum.photos/seed/roman-siege-engine/400/300.jpg" class="gallery-image" alt="Roman Siege Engine">
+                    <div class="gallery-overlay">
+                        <h4>Ballista Demonstration</h4>
+                        <p>Ancient Roman siege warfare technology</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> April 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viking Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="viking" style="grid-row: span 2;">
+                    <img src="https://picsum.photos/seed/viking-longship/400/600.jpg" class="gallery-image" alt="Viking Longship">
+                    <div class="gallery-overlay">
+                        <h4>Viking Longship</h4>
+                        <p>Authentic Norse vessel construction and sailing</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> May 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Lakeside Park</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="viking">
+                    <img src="https://picsum.photos/seed/viking-shieldmaiden/400/300.jpg" class="gallery-image" alt="Viking Shieldmaiden">
+                    <div class="gallery-overlay">
+                        <h4>Shieldmaiden Warriors</h4>
+                        <p>Norse women in combat and daily life</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> May 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="viking">
+                    <img src="https://picsum.photos/seed/viking-blacksmith/400/300.jpg" class="gallery-image" alt="Viking Blacksmith">
+                    <div class="gallery-overlay">
+                        <h4>Viking Forge</h4>
+                        <p>Traditional Norse metalworking techniques</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> May 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renaissance Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="renaissance" style="grid-column: span 2;">
+                    <img src="https://picsum.photos/seed/renaissance-jousting/600/300.jpg" class="gallery-image" alt="Renaissance Jousting">
+                    <div class="gallery-overlay">
+                        <h4>Medieval Jousting Tournament</h4>
+                        <p>Knights competing in the grand jousting arena</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> June 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Castle Hill Gardens</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="renaissance">
+                    <img src="https://picsum.photos/seed/renaissance-artisan/400/300.jpg" class="gallery-image" alt="Renaissance Artisan">
+                    <div class="gallery-overlay">
+                        <h4>Master Artisans</h4>
+                        <p>Period crafts and guild demonstrations</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> June 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ancient Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="ancient">
+                    <img src="https://picsum.photos/seed/ancient-greek-philosophy/400/300.jpg" class="gallery-image" alt="Ancient Greek Philosophy">
+                    <div class="gallery-overlay">
+                        <h4>Greek Symposium</h4>
+                        <p>Philosophical debates and classical learning</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> July 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Academy Campus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="ancient">
+                    <img src="https://picsum.photos/seed/ancient-egypt-pharaoh/400/300.jpg" class="gallery-image" alt="Ancient Egyptian Pharaoh">
+                    <div class="gallery-overlay">
+                        <h4>Egyptian Court</h4>
+                        <p>Pharaonic ceremonies and hieroglyph demonstrations</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> August 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonial Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="colonial" style="grid-column: span 2;">
+                    <img src="https://picsum.photos/seed/colonial-militia/600/300.jpg" class="gallery-image" alt="Colonial Militia">
+                    <div class="gallery-overlay">
+                        <h4>Colonial Militia Drill</h4>
+                        <p>Revolutionary War military formations and tactics</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> August 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Pioneer Village</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Victorian Gallery Items -->
+                <div class="gallery-item animate-on-scroll" data-category="victorian">
+                    <img src="https://picsum.photos/seed/victorian-christmas/400/300.jpg" class="gallery-image" alt="Victorian Christmas">
+                    <div class="gallery-overlay">
+                        <h4>Victorian Christmas</h4>
+                        <p>19th century holiday traditions and celebrations</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> December 2025</span>
+                            <span><i class="fas fa-map-marker"></i> Heritage Manor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item animate-on-scroll" data-category="victorian">
+                    <img src="https://picsum.photos/seed/victorian-tea-party/400/300.jpg" class="gallery-image" alt="Victorian Tea Party">
+                    <div class="gallery-overlay">
+                        <h4>Victorian Tea Party</h4>
+                        <p>Elegant 19th century social gatherings</p>
+                        <div class="gallery-meta">
+                            <span><i class="fas fa-calendar"></i> December 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section class="section bg-light video-gallery">
+        <div class="container">
+            <h2 class="section-title text-center mb-5 animate-on-scroll">Video Gallery</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card-3d">
+                        <div class="video-placeholder">
+                            <img src="https://picsum.photos/seed/video-medieval-battle/400/250.jpg" class="card-img-top" alt="Medieval Battle Video">
+                            <div class="video-overlay">
+                                <i class="fas fa-play-circle fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4>Medieval Reenactment</h4>
+                            <p>Full-scale medieval combat demonstration</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card-3d">
+                        <div class="video-placeholder">
+                            <img src="https://picsum.photos/seed/video-roman-camp/400/250.jpg" class="card-img-top" alt="Roman Camp Video">
+                            <div class="video-overlay">
+                                <i class="fas fa-play-circle fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4>Roman Legion Daily Life</h4>
+                            <p>Behind the scenes of Roman military camp</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card-3d">
+                        <div class="video-placeholder">
+                            <img src="https://picsum.photos/seed/video-viking-festival/400/250.jpg" class="card-img-top" alt="Viking Festival Video">
+                            <div class="video-overlay">
+                                <i class="fas fa-play-circle fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4>Viking Festival Highlights</h4>
+                            <p>Norse culture and warrior demonstrations</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Submission Section -->
+    <section class="section">
+        <div class="container">
+            <div class="card-3d p-5 text-center">
+                <h2 class="section-title">Share Your Photos</h2>
+                <p class="lead mb-4">
+                    Attended one of our events? Share your historical reenactment photos with our community!
+                </p>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h4>How to Submit</h4>
+                        <ul class="text-start">
+                            <li>Email photos to gallery@historicalgroup.com</li>
+                            <li>Include event name and date</li>
+                            <li>High-resolution images preferred</li>
+                            <li>You retain all photo rights</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Photo Guidelines</h4>
+                        <ul class="text-start">
+                            <li>Focus on historical accuracy</li>
+                            <li>Capture action and emotion</li>
+                            <li>Show period details and costumes</li>
+                            <li>Group shots and individual portraits welcome</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary btn-lg">Submit Your Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo mb-3">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Historical Guild</span>
+                </div>
+                <p>Bringing history to life through authentic reenactments and educational programs.</p>
+                <div class="social-links mt-3">
+                    <a href="#" class="text-accent me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                    <a href="#" class="text-accent"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="members.html">Our Members</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Membership Info</a></li>
+                    <li><a href="#">Event Guidelines</a></li>
+                    <li><a href="#">Safety Protocols</a></li>
+                    <li><a href="#">Volunteer Opportunities</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates about upcoming events and historical insights.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Historical Reenactment Group. All rights reserved. | 
+                <a href="#" class="text-accent">Privacy Policy</a> | 
+                <a href="#" class="text-accent">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Reenactment Group - Niche Experience</title>
+    <meta name="description" content="Specialized historical reenactment experiences focusing on authentic period crafts, combat training, and immersive living history events">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Niche Landing Styles */
+        .hero-niche {
+            background: linear-gradient(135deg, #2A0A0A, var(--primary-maroon));
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-niche::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://picsum.photos/seed/medieval-crafts/1920/1080.jpg') center/cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+        
+        .niche-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .niche-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+        
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .specialty-card {
+            background: linear-gradient(145deg, white, #f8f8f8);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        
+        .specialty-header {
+            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+            padding: 2rem;
+            text-align: center;
+            color: var(--primary-maroon);
+        }
+        
+        .specialty-header h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .specialty-content {
+            padding: 2rem;
+        }
+        
+        .specialty-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .specialty-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .specialty-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .specialty-list i {
+            color: var(--accent-gold);
+            width: 20px;
+        }
+        
+        .immersive-section {
+            background: linear-gradient(135deg, rgba(245, 241, 230, 0.8), rgba(201, 162, 77, 0.2));
+            padding: 5rem 0;
+            margin: 4rem 0;
+        }
+        
+        .immersive-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .immersive-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-maroon);
+            margin-bottom: 2rem;
+        }
+        
+        .immersive-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .immersive-feature {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .immersive-feature i {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-niche {
+            background: linear-gradient(135deg, var(--primary-maroon), #2A0A0A);
+            color: var(--accent-gold);
+            padding: 4rem 0;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .cta-niche h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        body.dark-theme .specialty-card {
+            background: linear-gradient(145deg, #3A3530, #2A2520);
+        }
+        
+        body.dark-theme .immersive-section {
+            background: linear-gradient(135deg, rgba(91, 27, 27, 0.4), rgba(201, 162, 77, 0.1));
+        }
+        
+        body.dark-theme .immersive-content h2 {
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span>Historical Guild</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home1</a></li>
+                            <li><a class="dropdown-item" href="home2.html">Home2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="members.html" class="nav-link">Members</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="header-buttons">
+                        <a href="dashboard.html" class="btn btn-secondary">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Niche Hero Section -->
+    <section class="hero-niche">
+        <div class="container">
+            <div class="niche-content">
+                <h1>Master Historical Crafts & Combat</h1>
+                <p class="lead">Specialized training in authentic period techniques, from medieval swordsmanship to traditional craftsmanship. Join our elite community of dedicated historical practitioners.</p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary btn-lg">Begin Your Journey</a>
+                    <a href="events.html" class="btn btn-secondary btn-lg">View Training</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Specialized Disciplines</h2>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-header">
+                        <h3>Medieval Combat</h3>
+                    </div>
+                    <div class="specialty-content">
+                        <ul class="specialty-list">
+                            <li><i class="fas fa-sword"></i> Longsword & Sword & Shield</li>
+                            <li><i class="fas fa-shield-alt"></i> Historical Fencing Styles</li>
+                            <li><i class="fas fa-users"></i> Formation Tactics</li>
+                            <li><i class="fas fa-medal"></i> Tournament Training</li>
+                            <li><i class="fas fa-heart"></i> Combat Safety & First Aid</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-header">
+                        <h3>Period Crafts</h3>
+                    </div>
+                    <div class="specialty-content">
+                        <ul class="specialty-list">
+                            <li><i class="fas fa-hammer"></i> Blacksmithing & Metalwork</li>
+                            <li><i class="fas fa-cut"></i> Leatherworking & Toolmaking</li>
+                            <li><i class="fas fa-tshirt"></i> Historical Garment Creation</li>
+                            <li><i class="fas fa-palette"></i> Period Pigments & Dyes</li>
+                            <li><i class="fas fa-home"></i> Traditional Building Methods</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-header">
+                        <h3>Living History</h3>
+                    </div>
+                    <div class="specialty-content">
+                        <ul class="specialty-list">
+                            <li><i class="fas fa-theater-masks"></i> Character Development</li>
+                            <li><i class="fas fa-language"></i> Historical Languages</li>
+                            <li><i class="fas fa-utensils"></i> Period Cooking & Foodways</li>
+                            <li><i class="fas fa-music"></i> Traditional Music & Dance</li>
+                            <li><i class="fas fa-book"></i> Historical Research Methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immersive Experience Section -->
+    <section class="immersive-section">
+        <div class="container">
+            <div class="immersive-content">
+                <h2>Immersive Historical Experiences</h2>
+                <p class="lead">Step back in time with our fully immersive programs that transport you to another era. From weekend encampments to month-long intensive training, we offer authentic historical experiences like no other.</p>
+                
+                <div class="immersive-features">
+                    <div class="immersive-feature">
+                        <i class="fas fa-campground"></i>
+                        <h4>Period Encampments</h4>
+                        <p>Live historically accurate camp life with authentic shelter, food, and daily routines.</p>
+                    </div>
+                    <div class="immersive-feature">
+                        <i class="fas fa-chess-knight"></i>
+                        <h4>Knight Training</h4>
+                        <p>Intensive combat training focusing on historical martial arts and chivalric practices.</p>
+                    </div>
+                    <div class="immersive-feature">
+                        <i class="fas fa-scroll"></i>
+                        <h4>Scholar Programs</h4>
+                        <p>Deep dive into historical research, documentation, and educational presentation.</p>
+                    </div>
+                    <div class="immersive-feature">
+                        <i class="fas fa-crown"></i>
+                        <h3>Leadership Roles</h3>
+                        <p>Develop leadership skills through historical command structures and governance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Niche CTA Section -->
+    <section class="cta-niche">
+        <div class="container">
+            <h2>Ready to Master Historical Skills?</h2>
+            <p class="lead mb-4">
+                Join our specialized community and gain access to expert instructors, 
+                authentic equipment, and a network of passionate historical practitioners.
+            </p>
+            <div class="hero-buttons justify-content-center">
+                <a href="register.html" class="btn btn-primary btn-lg">Apply for Membership</a>
+                <a href="contact.html" class="btn btn-secondary btn-lg">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo mb-3">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Historical Reenactment Group</span>
+                </div>
+                <p>Bringing history to life through authentic reenactments and educational programs.</p>
+                <div class="social-links mt-3">
+                    <a href="#" class="text-accent me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Sponsorship</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates about upcoming events and historical insights.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Historical Reenactment Group. All rights reserved. | 
+                <a href="#" class="text-accent">Privacy Policy</a> | 
+                <a href="#" class="text-accent">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

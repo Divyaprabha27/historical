@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Historical Reenactment Group</title>
+    <meta name="description" content="Join the Historical Reenactment Group and start your journey into living history">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Register Page Specific Styles */
+        .register-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-maroon), #2A0A0A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .register-container h3 {
+            color: #ffffff;
+        }
+        
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://picsum.photos/seed/historical-register/1920/1080.jpg') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .register-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .register-header {
+            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .register-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-maroon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .register-title {
+            color: var(--primary-maroon);
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .register-subtitle {
+            color: var(--primary-maroon);
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .register-body {
+            padding: 2rem 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            color: var(--primary-maroon);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(201, 162, 77, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(245, 241, 230, 0.5);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.1);
+            background: white;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(201, 162, 77, 0.3);
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .social-login {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-btn {
+            width: 100%;
+            padding: 0.6rem;
+            border: 2px solid rgba(201, 162, 77, 0.3);
+            border-radius: 10px;
+            background: white;
+            color: var(--primary-maroon);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            margin-bottom: 0;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: var(--primary-maroon);
+        }
+        
+        .social-btn.google:hover {
+            border-color: #4285f4;
+            background: rgba(66, 133, 244, 0.05);
+        }
+        
+        .social-btn.facebook:hover {
+            border-color: #1877f2;
+            background: rgba(24, 119, 242, 0.05);
+        }
+        
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Mobile responsiveness for form layout */
+        @media (max-width: 767px) {
+            .register-card {
+                margin: 1rem;
+                max-width: none;
+            }
+            
+            .register-body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .row > .col-md-6 {
+                margin-bottom: 1rem;
+            }
+            
+            .social-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem;
+            }
+            
+            .social-btn i {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Small screens adjustment */
+        @media (max-width: 576px) {
+            .register-card {
+                margin: 0.5rem;
+                border-radius: 15px;
+            }
+            
+            .register-body {
+                padding: 1.5rem 1rem;
+            }
+            
+            .register-header {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+        }
+        
+        .register-btn {
+            width: 50%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+            color: var(--primary-maroon);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 162, 77, 0.3);
+            margin: 0 auto 1rem auto;
+            display: block;
+        }
+        
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 162, 77, 0.4);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--primary-maroon);
+        }
+        
+        .login-link a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .theme-toggle-standalone {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 162, 77, 0.3);
+            z-index: 1000;
+        }
+        
+        .theme-toggle-standalone:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(201, 162, 77, 0.4);
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-theme .register-container {
+            background: linear-gradient(135deg, #1A0A0A, var(--primary-maroon));
+        }
+        
+        body.dark-theme .register-card {
+            background: linear-gradient(145deg, #3A3530, #2A2520);
+        }
+        
+        body.dark-theme .register-header {
+            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+        }
+        
+        body.dark-theme .form-input {
+            background: rgba(201, 162, 77, 0.1);
+            border-color: rgba(201, 162, 77, 0.4);
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .form-input:focus {
+            background: rgba(201, 162, 77, 0.15);
+        }
+        
+        body.dark-theme .form-label {
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .social-btn {
+            background: rgba(201, 162, 77, 0.1);
+            border-color: rgba(201, 162, 77, 0.4);
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .social-btn:hover {
+            background: rgba(201, 162, 77, 0.2);
+        }
+        
+        body.dark-theme .divider span {
+            background: linear-gradient(145deg, #3A3530, #2A2520);
+        }
+        
+        body.dark-theme .login-link {
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .login-link a {
+            color: var(--accent-gold);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 576px) {
+            .register-card {
+                margin: 1rem;
+            }
+            
+            .register-header {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+            
+            .register-body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .theme-toggle-standalone {
+                top: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle-standalone" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Register Container -->
+    <div class="register-container">
+        <div class="register-card">
+            <!-- Header with Logo -->
+            <div class="register-header">
+                <div class="register-logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="register-title">Join Our Guild</h3>
+                 </div>
+
+            <!-- Registration Form -->
+            <div class="register-body">
+                <form id="registerForm">
+                    <!-- Name and Email Row -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <input type="text" class="form-input" id="fullName" name="fullName" required placeholder="Enter your full name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <input type="email" class="form-input" id="email" name="email" required placeholder="Enter your email address">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password Row -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <input type="password" class="form-input" id="password" name="password" required placeholder="Create a strong password">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                               <input type="password" class="form-input" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Register Button -->
+                    <button type="submit" class="register-btn">Create Account</button>
+                </form>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span>OR CONTINUE WITH</span>
+                </div>
+
+                <!-- Social Login Buttons Row -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="#" class="social-btn google" id="googleLogin">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="#" class="social-btn facebook" id="facebookLogin">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="login-link">
+                    Already have an account? <a href="login.html">Sign in here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Theme Toggle Functionality
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-theme');
+                const isDark = body.classList.contains('dark-theme');
+
+                // Update icon
+                if (isDark) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+
+        // Form Validation
+        function validateForm() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Reset error states
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.style.borderColor = 'rgba(201, 162, 77, 0.3)';
+            });
+
+            let isValid = true;
+
+            // Validate full name
+            if (fullName.length < 2) {
+                document.getElementById('fullName').style.borderColor = '#dc3545';
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email').style.borderColor = '#dc3545';
+                isValid = false;
+            }
+
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('password').style.borderColor = '#dc3545';
+                isValid = false;
+            }
+
+            // Validate password confirmation
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPassword').style.borderColor = '#dc3545';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Handle Registration
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            if (!validateForm()) {
+                alert('Please correct the errors in the form.');
+                return;
+            }
+
+            const formData = {
+                fullName: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value
+            };
+
+            // Simulate registration (in real app, this would be an API call)
+            console.log('Registration data:', formData);
+            
+            // Store user data (in real app, this would be handled by backend)
+            localStorage.setItem('userRegistered', 'true');
+            localStorage.setItem('userEmail', formData.email);
+            localStorage.setItem('userName', formData.fullName);
+
+            // Show success message
+            alert('Registration successful! Welcome to the Historical Reenactment Group!');
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
+
+        // Handle Social Login
+        function handleSocialLogin(provider) {
+            event.preventDefault();
+            
+            // Simulate social login (in real app, this would use OAuth)
+            console.log(`Logging in with ${provider}`);
+            
+            // Store mock user data
+            localStorage.setItem('userRegistered', 'true');
+            localStorage.setItem('userEmail', `user@${provider}.com`);
+            localStorage.setItem('userName', `${provider} User`);
+            localStorage.setItem('loginMethod', provider);
+
+            // Show success message
+            alert(`Successfully logged in with ${provider}! Welcome to the Historical Reenactment Group!`);
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme toggle
+            initThemeToggle();
+
+            // Form submission
+            document.getElementById('registerForm').addEventListener('submit', handleRegistration);
+
+            // Social login buttons
+            document.getElementById('googleLogin').addEventListener('click', function(e) {
+                handleSocialLogin('Google');
+            });
+
+            document.getElementById('facebookLogin').addEventListener('click', function(e) {
+                handleSocialLogin('Facebook');
+            });
+
+            // Add input validation feedback
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() === '') {
+                        this.style.borderColor = 'rgba(201, 162, 77, 0.3)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

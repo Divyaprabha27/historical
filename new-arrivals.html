@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals - Historical Reenactment Group</title>
+    <meta name="description" content="Discover our latest historical reenactment gear, costumes, and equipment">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* New Arrivals Specific Styles */
+        .arrivals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .arrival-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .arrival-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .arrival-item.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        .arrival-item.tall {
+            grid-row: span 2;
+        }
+        
+        .arrival-item.wide {
+            grid-column: span 2;
+        }
+        
+        .arrival-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .arrival-item.featured .arrival-image {
+            height: 400px;
+        }
+        
+        .arrival-item.tall .arrival-image {
+            height: 500px;
+        }
+        
+        .arrival-item:hover .arrival-image {
+            transform: scale(1.05);
+        }
+        
+        .arrival-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(91, 27, 27, 0.8) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .arrival-item:hover .arrival-overlay {
+            opacity: 1;
+        }
+        
+        .arrival-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        
+        .arrival-badge.new {
+            background: #28a745;
+            color: white;
+        }
+        
+        .arrival-badge.limited {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .arrival-content {
+            padding: 1.5rem;
+        }
+        
+        .arrival-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-maroon);
+            margin-bottom: 0.5rem;
+        }
+        
+        .arrival-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .arrival-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .arrival-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .arrival-rating {
+            color: #ffc107;
+        }
+        
+        .arrival-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .arrival-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .arrival-btn.primary {
+            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+            color: var(--primary-maroon);
+        }
+        
+        .arrival-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 162, 77, 0.3);
+        }
+        
+        .arrival-btn.secondary {
+            background: transparent;
+            color: var(--primary-maroon);
+            border: 2px solid var(--primary-maroon);
+        }
+        
+        .arrival-btn.secondary:hover {
+            background: var(--primary-maroon);
+            color: white;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: var(--bg-parchment);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-gold);
+            background: white;
+            color: var(--primary-maroon);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+        }
+        
+        /* Dark Mode */
+        body.dark-theme .arrival-item {
+            background: linear-gradient(145deg, #3A3530, #2A2520);
+        }
+        
+        body.dark-theme .arrival-title {
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .arrival-description {
+            color: #ccc;
+        }
+        
+        body.dark-theme .filter-section {
+            background: var(--bg-parchment-dark);
+        }
+        
+        body.dark-theme .filter-btn {
+            background: rgba(201, 162, 77, 0.1);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .filter-btn:hover,
+        body.dark-theme .filter-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .arrivals-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .arrival-item.featured,
+            .arrival-item.wide {
+                grid-column: span 1;
+            }
+            
+            .arrival-item.tall {
+                grid-row: span 1;
+            }
+            
+            .arrival-item.featured .arrival-image {
+                height: 300px;
+            }
+            
+            .arrival-item.tall .arrival-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span>Historical Reenactment Group</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home1</a></li>
+                            <li><a class="dropdown-item" href="home2.html">Home2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="members.html" class="nav-link">Members</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="header-buttons">
+                        <a href="dashboard.html" class="btn btn-secondary">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 100px;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="section-title animate-on-scroll">New Arrivals</h1>
+                <p class="lead">Discover our latest historical reenactment gear, costumes, and equipment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Items</button>
+                <button class="filter-btn" data-category="armor">Armor</button>
+                <button class="filter-btn" data-category="weapons">Weapons</button>
+                <button class="filter-btn" data-category="clothing">Clothing</button>
+                <button class="filter-btn" data-category="accessories">Accessories</button>
+                <button class="filter-btn" data-category="equipment">Equipment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="arrivals-grid" id="arrivalsGrid">
+                <!-- Featured Item -->
+                <div class="arrival-item featured animate-on-scroll" data-category="armor">
+                    <span class="arrival-badge new">NEW</span>
+                    <img src="https://picsum.photos/seed/medieval-knight-armor/600/400.jpg" class="arrival-image" alt="Medieval Knight Armor">
+                    <div class="arrival-overlay">
+                        <h4>Complete Knight Armor Set</h4>
+                        <p>Authentic 15th century full plate armor with custom fitting</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.9 (127 reviews)</span>
+                            <span><i class="fas fa-box"></i> In Stock</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Complete Knight Armor Set</h3>
+                        <p class="arrival-description">Authentic 15th century full plate armor including helmet, breastplate, gauntlets, and greaves. Custom fitted to your measurements.</p>
+                        <div class="arrival-price">$2,499.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                4.9
+                            </span>
+                            <span>127 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medieval Sword -->
+                <div class="arrival-item animate-on-scroll" data-category="weapons">
+                    <span class="arrival-badge limited">LIMITED</span>
+                    <img src="https://picsum.photos/seed/medieval-sword/400/300.jpg" class="arrival-image" alt="Medieval Sword">
+                    <div class="arrival-overlay">
+                        <h4>Bastard Sword</h4>
+                        <p>Hand-forged medieval sword with leather grip</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.8 (89 reviews)</span>
+                            <span><i class="fas fa-box"></i> Only 5 left</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Bastard Sword</h3>
+                        <p class="arrival-description">Hand-forged high carbon steel blade with authentic leather-wrapped grip and polished pommel.</p>
+                        <div class="arrival-price">$899.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                4.8
+                            </span>
+                            <span>89 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viking Shield -->
+                <div class="arrival-item animate-on-scroll" data-category="armor">
+                    <span class="arrival-badge new">NEW</span>
+                    <img src="https://picsum.photos/seed/viking-shield/400/300.jpg" class="arrival-image" alt="Viking Shield">
+                    <div class="arrival-overlay">
+                        <h4>Viking Round Shield</h4>
+                        <p>Traditional Norse shield with authentic wood construction</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.7 (45 reviews)</span>
+                            <span><i class="fas fa-box"></i> In Stock</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Viking Round Shield</h3>
+                        <p class="arrival-description">Authentic Norse round shield with hand-painted design and leather rim. 24" diameter, historically accurate.</p>
+                        <div class="arrival-price">$349.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                4.7
+                            </span>
+                            <span>45 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medieval Tunic -->
+                <div class="arrival-item wide animate-on-scroll" data-category="clothing">
+                    <span class="arrival-badge new">NEW</span>
+                    <img src="https://picsum.photos/seed/medieval-tunic/600/300.jpg" class="arrival-image" alt="Medieval Tunic">
+                    <div class="arrival-overlay">
+                        <h4>Medieval Noble Tunic</h4>
+                        <p>Luxurious velvet tunic with embroidered family crest</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.9 (67 reviews)</span>
+                            <span><i class="fas fa-box"></i> In Stock</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Medieval Noble Tunic</h3>
+                        <p class="arrival-description">Luxurious velvet tunic with gold embroidery and custom family crest. Available in multiple colors and sizes.</p>
+                        <div class="arrival-price">$189.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                4.9
+                            </span>
+                            <span>67 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roman Helmet -->
+                <div class="arrival-item animate-on-scroll" data-category="armor">
+                    <img src="https://picsum.photos/seed/roman-helmet/400/300.jpg" class="arrival-image" alt="Roman Helmet">
+                    <div class="arrival-overlay">
+                        <h4>Roman Centurion Helmet</h4>
+                        <p>Authentic Imperial Roman helmet with crest</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.8 (92 reviews)</span>
+                            <span><i class="fas fa-box"></i> In Stock</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Roman Centurion Helmet</h3>
+                        <p class="arrival-description">Imperial Roman helmet with authentic red crest and brass fittings. Museum quality reproduction.</p>
+                        <div class="arrival-price">$599.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                4.8
+                            </span>
+                            <span>92 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Archer Bow -->
+                <div class="arrival-item tall animate-on-scroll" data-category="weapons">
+                    <span class="arrival-badge limited">LIMITED</span>
+                    <img src="https://picsum.photos/seed/english-longbow/400/600.jpg" class="arrival-image" alt="English Longbow">
+                    <div class="arrival-overlay">
+                        <h4>English Longbow</h4>
+                        <p>Traditional yew wood longbow with linen string</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.9 (156 reviews)</span>
+                            <span><i class="fas fa-box"></i> Only 3 left</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">English Longbow</h3>
+                        <p class="arrival-description">Traditional yew wood longbow with linen string. 72" draw weight, perfect for historical archery.</p>
+                        <div class="arrival-price">$449.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                4.9
+                            </span>
+                            <span>156 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medieval Boots -->
+                <div class="arrival-item animate-on-scroll" data-category="clothing">
+                    <img src="https://picsum.photos/seed/medieval-boots/400/300.jpg" class="arrival-image" alt="Medieval Boots">
+                    <div class="arrival-overlay">
+                        <h4>Medieval Leather Boots</h4>
+                        <p>Handcrafted leather boots with period-appropriate design</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.6 (78 reviews)</span>
+                            <span><i class="fas fa-box"></i> In Stock</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Medieval Leather Boots</h3>
+                        <p class="arrival-description">Handcrafted leather boots with period-appropriate design. Available in various sizes and colors.</p>
+                        <div class="arrival-price">$129.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                4.6
+                            </span>
+                            <span>78 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renaissance Cloak -->
+                <div class="arrival-item animate-on-scroll" data-category="clothing">
+                    <span class="arrival-badge new">NEW</span>
+                    <img src="https://picsum.photos/seed/renaissance-cloak/400/300.jpg" class="arrival-image" alt="Renaissance Cloak">
+                    <div class="arrival-overlay">
+                        <h4>Renaissance Noble Cloak</h4>
+                        <p>Luxurious wool cloak with silver embroidery</p>
+                        <div class="arrival-meta">
+                            <span><i class="fas fa-star"></i> 4.8 (54 reviews)</span>
+                            <span><i class="fas fa-box"></i> In Stock</span>
+                        </div>
+                    </div>
+                    <div class="arrival-content">
+                        <h3 class="arrival-title">Renaissance Noble Cloak</h3>
+                        <p class="arrival-description">Luxurious wool cloak with silver embroidery and silk lining. Perfect for Renaissance fairs.</p>
+                        <div class="arrival-price">$229.00</div>
+                        <div class="arrival-meta">
+                            <span class="arrival-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                4.8
+                            </span>
+                            <span>54 Reviews</span>
+                        </div>
+                        <div class="arrival-actions">
+                            <a href="#" class="arrival-btn primary">Add to Cart</a>
+                            <a href="#" class="arrival-btn secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo mb-3">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Historical Reenactment Group</span>
+                </div>
+                <p>Bringing history to life through authentic reenactments and educational programs.</p>
+                <div class="social-links mt-3">
+                    <a href="#" class="text-accent me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                    <a href="#" class="text-accent"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Sponsorship</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates about upcoming events and historical insights.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Historical Reenactment Group. All rights reserved. | 
+                <a href="#" class="text-accent">Privacy Policy</a> | 
+                <a href="#" class="text-accent">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const arrivalItems = document.querySelectorAll('.arrival-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    
+                    arrivalItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                            // Add animation
+                            item.classList.add('animate-on-scroll');
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Add to cart functionality
+            document.querySelectorAll('.arrival-btn.primary').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const itemName = this.closest('.arrival-item').querySelector('.arrival-title').textContent;
+                    alert(`${itemName} has been added to your cart!`);
+                });
+            });
+            
+            // View details functionality
+            document.querySelectorAll('.arrival-btn.secondary').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const itemName = this.closest('.arrival-item').querySelector('.arrival-title').textContent;
+                    alert(`Viewing details for ${itemName}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

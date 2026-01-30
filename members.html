@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Historical Reenactment Group</title>
+    <meta name="description" content="Meet our talented members who bring history to life through authentic reenactments">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span>Historical Guild</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home1</a></li>
+                            <li><a class="dropdown-item" href="home2.html">Home2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="members.html" class="nav-link active">Members</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="header-buttons">
+                        <a href="dashboard.html" class="btn btn-secondary">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 50vh; padding: 6rem 0 4rem 0; display: flex; align-items: center; justify-content: center;">
+        <div class="container">
+            <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                <h1 class="hero-title animate-on-scroll" style="font-size: 3rem; margin-bottom: 1.5rem; margin-top: 2rem; color: var(--accent-gold);">Our Members</h1>
+                <p class="hero-subtitle animate-on-scroll" style="font-size: 1.3rem; margin-bottom: 2rem; color: var(--bg-parchment); opacity: 0.95;">Meet the passionate individuals who bring history to life through their dedication to authenticity and craftsmanship</p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="register.html" class="btn-hero" style="padding: 1rem 2rem; font-size: 1.1rem; margin: 0 0.5rem;">Join the Guild</a>
+                    <a href="contact.html" class="btn-hero" style="padding: 1rem 2rem; font-size: 1.1rem; margin: 0 0.5rem;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Filter Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card-3d p-4">
+                        <h3 class="text-center mb-4">Filter by Historical Era</h3>
+                        <div class="d-flex flex-wrap justify-content-center gap-2" id="eraFilters">
+                            <button class="btn btn-primary active" data-era="all">All Members</button>
+                            <button class="btn btn-secondary" data-era="medieval">Medieval</button>
+                            <button class="btn btn-secondary" data-era="roman">Roman</button>
+                            <button class="btn btn-secondary" data-era="viking">Viking</button>
+                            <button class="btn btn-secondary" data-era="renaissance">Renaissance</button>
+                            <button class="btn btn-secondary" data-era="ancient">Ancient</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="member-grid" id="membersGrid">
+                <!-- Medieval Members -->
+                <div class="member-card animate-on-scroll" data-era="medieval">
+                    <img src="https://picsum.photos/seed/sir-william/400/300.jpg" class="member-image" alt="Sir William">
+                    <div class="member-info">
+                        <h3 class="member-name">Sir William</h3>
+                        <p class="member-role">Knight Commander</p>
+                        <p class="member-era">Medieval Period (12th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Swordsmanship</span>
+                            <span class="badge bg-primary me-1">Heraldry</span>
+                            <span class="badge bg-primary me-1">Tactics</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="medieval">
+                    <img src="https://picsum.photos/seed/lady-eleanor/400/300.jpg" class="member-image" alt="Lady Eleanor">
+                    <div class="member-info">
+                        <h3 class="member-name">Lady Eleanor</h3>
+                        <p class="member-role">Noblewoman & Weaver</p>
+                        <p class="member-era">Medieval Period (14th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Textile Arts</span>
+                            <span class="badge bg-primary me-1">Etiquette</span>
+                            <span class="badge bg-primary me-1">Herbalism</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="medieval">
+                    <img src="https://picsum.photos/seed/brother-thomas/400/300.jpg" class="member-image" alt="Brother Thomas">
+                    <div class="member-info">
+                        <h3 class="member-name">Brother Thomas</h3>
+                        <p class="member-role">Monk & Scribe</p>
+                        <p class="member-era">Medieval Period (13th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Calligraphy</span>
+                            <span class="badge bg-primary me-1">Latin</span>
+                            <span class="badge bg-primary me-1">Illumination</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roman Members -->
+                <div class="member-card animate-on-scroll" data-era="roman">
+                    <img src="https://picsum.photos/seed/marcus-aurelius/400/300.jpg" class="member-image" alt="Marcus Aurelius">
+                    <div class="member-info">
+                        <h3 class="member-name">Marcus Aurelius</h3>
+                        <p class="member-role">Centurion</p>
+                        <p class="member-era">Roman Empire (2nd Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Military Tactics</span>
+                            <span class="badge bg-primary me-1">Latin</span>
+                            <span class="badge bg-primary me-1">Engineering</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="roman">
+                    <img src="https://picsum.photos/seed/cornelia-vibia/400/300.jpg" class="member-image" alt="Cornelia Vibia">
+                    <div class="member-info">
+                        <h3 class="member-name">Cornelia Vibia</h3>
+                        <p class="member-role">Patrician Lady</p>
+                        <p class="member-era">Roman Empire (1st Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Roman Culture</span>
+                            <span class="badge bg-primary me-1">Greek</span>
+                            <span class="badge bg-primary me-1">Music</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="roman">
+                    <img src="https://picsum.photos/seed/gaius-livius/400/300.jpg" class="member-image" alt="Gaius Livius">
+                    <div class="member-info">
+                        <h3 class="member-name">Gaius Livius</h3>
+                        <p class="member-role">Legionary</p>
+                        <p class="member-era">Roman Empire (3rd Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Combat</span>
+                            <span class="badge bg-primary me-1">Formation</span>
+                            <span class="badge bg-primary me-1">Survival</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viking Members -->
+                <div class="member-card animate-on-scroll" data-era="viking">
+                    <img src="https://picsum.photos/seed/astrid-bold/400/300.jpg" class="member-image" alt="Astrid the Bold">
+                    <div class="member-info">
+                        <h3 class="member-name">Astrid the Bold</h3>
+                        <p class="member-role">Shieldmaiden</p>
+                        <p class="member-era">Viking Age (9th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Axe Combat</span>
+                            <span class="badge bg-primary me-1">Navigation</span>
+                            <span class="badge bg-primary me-1">Norse Mythology</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="viking">
+                    <img src="https://picsum.photos/seed/bjorn-ironside/400/300.jpg" class="member-image" alt="Bjorn Ironside">
+                    <div class="member-info">
+                        <h3 class="member-name">Bjorn Ironside</h3>
+                        <p class="member-role">Raid Leader</p>
+                        <p class="member-era">Viking Age (10th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Leadership</span>
+                            <span class="badge bg-primary me-1">Shipbuilding</span>
+                            <span class="badge bg-primary me-1">Old Norse</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="viking">
+                    <img src="https://picsum.photos/seed/freya-discoverer/400/300.jpg" class="member-image" alt="Freya the Discoverer">
+                    <div class="member-info">
+                        <h3 class="member-name">Freya the Discoverer</h3>
+                        <p class="member-role">Trader & Explorer</p>
+                        <p class="member-era">Viking Age (11th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Trade</span>
+                            <span class="badge bg-primary me-1">Cartography</span>
+                            <span class="badge bg-primary me-1">Languages</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renaissance Members -->
+                <div class="member-card animate-on-scroll" data-era="renaissance">
+                    <img src="https://picsum.photos/seed/leonardo-davinci/400/300.jpg" class="member-image" alt="Leonardo da Vinci">
+                    <div class="member-info">
+                        <h3 class="member-name">Leonardo da Vinci</h3>
+                        <p class="member-role">Artist & Inventor</p>
+                        <p class="member-era">Renaissance (15th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Painting</span>
+                            <span class="badge bg-primary me-1">Engineering</span>
+                            <span class="badge bg-primary me-1">Anatomy</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="renaissance">
+                    <img src="https://picsum.photos/seed/isabella-estee/400/300.jpg" class="member-image" alt="Isabella d'Este">
+                    <div class="member-info">
+                        <h3 class="member-name">Isabella d'Este</h3>
+                        <p class="member-role">Patron of Arts</p>
+                        <p class="member-era">Renaissance (16th Century)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Art Collection</span>
+                            <span class="badge bg-primary me-1">Diplomacy</span>
+                            <span class="badge bg-primary me-1">Music</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ancient Members -->
+                <div class="member-card animate-on-scroll" data-era="ancient">
+                    <img src="https://picsum.photos/seed/pericles-athens/400/300.jpg" class="member-image" alt="Pericles of Athens">
+                    <div class="member-info">
+                        <h3 class="member-name">Pericles of Athens</h3>
+                        <p class="member-role">Statesman & Orator</p>
+                        <p class="member-era">Ancient Greece (5th Century BC)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Rhetoric</span>
+                            <span class="badge bg-primary me-1">Philosophy</span>
+                            <span class="badge bg-primary me-1">Politics</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll" data-era="ancient">
+                    <img src="https://picsum.photos/seed/cleopatra-egypt/400/300.jpg" class="member-image" alt="Cleopatra VII">
+                    <div class="member-info">
+                        <h3 class="member-name">Cleopatra VII</h3>
+                        <p class="member-role">Pharaoh</p>
+                        <p class="member-era">Ancient Egypt (1st Century BC)</p>
+                        <div class="member-skills mt-3">
+                            <span class="badge bg-primary me-1">Leadership</span>
+                            <span class="badge bg-primary me-1">Languages</span>
+                            <span class="badge bg-primary me-1">Diplomacy</span>
+                        </div>
+                        <div class="member-social mt-3">
+                            <a href="#" class="text-accent me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-accent me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-accent"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="card-3d p-5 text-center">
+                <h2 class="section-title">Become a Member</h2>
+                <p class="lead mb-4">
+                    Join our passionate community of historical enthusiasts and help bring the past to life. 
+                    We welcome individuals of all skill levels and historical interests.
+                </p>
+                <div class="hero-buttons justify-content-center">
+                    <a href="register.html" class="btn-hero">Join the Guild</a>
+                    <a href="contact.html" class="btn-hero">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo mb-3">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Historical Guild</span>
+                </div>
+                <p>Bringing history to life through authentic reenactments and educational programs.</p>
+                <div class="social-links mt-3">
+                    <a href="#" class="text-accent me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-accent me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                    <a href="#" class="text-accent"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="members.html">Our Members</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Membership Info</a></li>
+                    <li><a href="#">Event Guidelines</a></li>
+                    <li><a href="#">Safety Protocols</a></li>
+                    <li><a href="#">Volunteer Opportunities</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates about upcoming events and historical insights.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Historical Reenactment Group. All rights reserved. | 
+                <a href="#" class="text-accent">Privacy Policy</a> | 
+                <a href="#" class="text-accent">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

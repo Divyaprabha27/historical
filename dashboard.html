@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Historical Reenactment Group</title>
+    <meta name="description" content="Admin dashboard for managing Historical Reenactment Group">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Dashboard Specific CSS -->
+    <style>
+        /* ===== DASHBOARD LAYOUT ===== */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--bg-parchment);
+        }
+        
+        body.dark-theme .dashboard-container {
+            background-color: var(--bg-parchment-dark);
+        }
+        
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B);
+            color: var(--accent-gold);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid rgba(201, 162, 77, 0.3);
+            text-align: center;
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-logo-icon {
+            width: 35px;
+            height: 35px;
+            margin-right: 0.75rem;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--primary-maroon);
+        }
+        
+        .admin-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            border-bottom: 1px solid rgba(201, 162, 77, 0.1);
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: rgba(201, 162, 77, 0.2);
+            border-left-color: var(--accent-gold);
+            padding-left: 2rem;
+        }
+        
+        .sidebar-menu i {
+            width: 20px;
+            margin-right: 1rem;
+            text-align: center;
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .dashboard-header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        body.dark-theme .dashboard-header {
+            background: var(--bg-parchment-dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dashboard-title {
+            font-size: 2rem;
+            color: var(--primary-maroon);
+            margin: 0;
+        }
+        
+        body.dark-theme .dashboard-title {
+            color: var(--accent-gold);
+        }
+        
+        .dashboard-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        /* ===== STATS CARDS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        body.dark-theme .stat-card {
+            background: var(--bg-parchment-dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-maroon);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-maroon);
+            margin-bottom: 0.5rem;
+        }
+        
+        body.dark-theme .stat-value {
+            color: var(--accent-gold);
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        body.dark-theme .stat-label {
+            color: #AAA;
+        }
+        
+        .stat-change {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stat-change.positive {
+            color: #28a745;
+        }
+        
+        .stat-change.negative {
+            color: #dc3545;
+        }
+        
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            display: none;
+        }
+        
+        body.dark-theme .content-section {
+            background: var(--bg-parchment-dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-maroon);
+            margin: 0;
+        }
+        
+        body.dark-theme .section-title {
+            color: var(--accent-gold);
+        }
+        
+        /* ===== TABLES ===== */
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .dashboard-table th {
+            background: var(--primary-maroon);
+            color: var(--accent-gold);
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .dashboard-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        body.dark-theme .dashboard-table td {
+            border-bottom-color: rgba(201, 162, 77, 0.2);
+        }
+        
+        .dashboard-table tr:hover {
+            background: rgba(201, 162, 77, 0.1);
+        }
+        
+        /* ===== MOBILE RESPONSIVE ===== */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: var(--primary-maroon);
+            color: var(--accent-gold);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                padding-top: 4rem;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ===== CHARTS ===== */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 1rem 0;
+        }
+        
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, rgba(201, 162, 77, 0.1), rgba(91, 27, 27, 0.1));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-maroon);
+            font-size: 1.2rem;
+        }
+        
+        body.dark-theme .chart-placeholder {
+            background: linear-gradient(135deg, rgba(201, 162, 77, 0.2), rgba(91, 27, 27, 0.2));
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Historical Guild</span>
+                </a>
+                <div class="admin-title">Admin Dashboard</div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" data-section="analytics" class="nav-link active">
+                        <i class="fas fa-chart-line"></i>
+                        Analytics
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="users" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="orders" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="messages" class="nav-link">
+                        <i class="fas fa-envelope"></i>
+                        Messages
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="events" class="nav-link">
+                        <i class="fas fa-calendar"></i>
+                        Events
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="members" class="nav-link">
+                        <i class="fas fa-user-shield"></i>
+                        Members
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="settings" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Website
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="dashboard-title">Admin Dashboard</h1>
+                    <p class="text-muted">Welcome back, Administrator</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> Admin
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value">1,234</div>
+                    <div class="stat-label">Total Users</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i> 12% from last month
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-value">45</div>
+                    <div class="stat-label">Upcoming Events</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i> 8% from last month
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-value">£12,450</div>
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i> 23% from last month
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="stat-value">89</div>
+                    <div class="stat-label">New Messages</div>
+                    <div class="stat-change negative">
+                        <i class="fas fa-arrow-down"></i> 5% from last month
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Section -->
+            <section class="content-section active" id="analytics">
+                <div class="section-header">
+                    <h2 class="section-title">Analytics Overview</h2>
+                    <div>
+                        <select class="form-select" style="width: auto;">
+                            <option>Last 30 days</option>
+                            <option>Last 7 days</option>
+                            <option>Last 3 months</option>
+                            <option>Last year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <h4>Website Traffic</h4>
+                        <div class="chart-container">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-line fa-3x"></i>
+                                <p>Traffic Analytics Chart</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <h4>User Demographics</h4>
+                        <div class="chart-container">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-pie fa-3x"></i>
+                                <p>Demographics Chart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <h4>Popular Pages</h4>
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Page</th>
+                                    <th>Views</th>
+                                    <th>Bounce Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#">Home</a></td>
+                                    <td>5,234</td>
+                                    <td>32%</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Events</a></td>
+                                    <td>3,456</td>
+                                    <td>28%</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Gallery</a></td>
+                                    <td>2,789</td>
+                                    <td>45%</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Members</a></td>
+                                    <td>1,234</td>
+                                    <td>38%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <h4>Recent Activity</h4>
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">New user registration</h6>
+                                    <small>2 minutes ago</small>
+                                </div>
+                                <p class="mb-1">John Doe joined as a member</p>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Event registration</h6>
+                                    <small>15 minutes ago</small>
+                                </div>
+                                <p class="mb-1">5 users registered for Medieval Tournament</p>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">New message</h6>
+                                    <small>1 hour ago</small>
+                                </div>
+                                <p class="mb-1">Contact form submission from Jane Smith</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Users Section -->
+            <section class="content-section" id="users">
+                <div class="section-header">
+                    <h2 class="section-title">User Management</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add User
+                    </button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#001</td>
+                                <td>John Smith</td>
+                                <td>john@example.com</td>
+                                <td><span class="badge bg-primary">Admin</span></td>
+                                <td><span class="badge bg-success">Active</span></td>
+                                <td>2024-01-15</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#002</td>
+                                <td>Jane Doe</td>
+                                <td>jane@example.com</td>
+                                <td><span class="badge bg-info">Member</span></td>
+                                <td><span class="badge bg-success">Active</span></td>
+                                <td>2024-01-20</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#003</td>
+                                <td>Bob Wilson</td>
+                                <td>bob@example.com</td>
+                                <td><span class="badge bg-info">Member</span></td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                                <td>2024-02-01</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Orders Section -->
+            <section class="content-section" id="orders">
+                <div class="section-header">
+                    <h2 class="section-title">Order Management</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New Order
+                    </button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Event</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>John Smith</td>
+                                <td>Medieval Tournament</td>
+                                <td>£25.00</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                                <td>2024-02-15</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-primary"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Jane Doe</td>
+                                <td>Viking Festival</td>
+                                <td>£30.00</td>
+                                <td><span class="badge bg-warning">Processing</span></td>
+                                <td>2024-02-16</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-primary"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Messages Section -->
+            <section class="content-section" id="messages">
+                <div class="section-header">
+                    <h2 class="section-title">Message Center</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Compose
+                    </button>
+                </div>
+                
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Contact Form Submission</h6>
+                            <small>2 hours ago</small>
+                        </div>
+                        <p class="mb-1">From: sarah@example.com</p>
+                        <p class="mb-1">Subject: Inquiry about membership requirements</p>
+                        <div class="mt-2">
+                            <button class="btn btn-sm btn-primary">Reply</button>
+                            <button class="btn btn-sm btn-secondary">Archive</button>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Event Registration Question</h6>
+                            <small>5 hours ago</small>
+                        </div>
+                        <p class="mb-1">From: mike@example.com</p>
+                        <p class="mb-1">Subject: Questions about Medieval Tournament</p>
+                        <div class="mt-2">
+                            <button class="btn btn-sm btn-primary">Reply</button>
+                            <button class="btn btn-sm btn-secondary">Archive</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Dashboard JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme toggle
+            initThemeToggle();
+            
+            // Mobile sidebar toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            mobileToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Sidebar navigation
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a[data-section]');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetSection = this.dataset.section;
+                    
+                    // Update active states
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide content sections
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    const targetElement = document.getElementById(targetSection);
+                    if (targetElement) {
+                        targetElement.classList.add('active');
+                    }
+                    
+                    // Close mobile sidebar
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Theme toggle function
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-theme');
+                const isDark = body.classList.contains('dark-theme');
+                
+                // Update icon
+                if (isDark) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+        
+        // Logout function
+        function handleLogout() {
+            // Clear any session data
+            localStorage.removeItem('adminSession');
+            localStorage.removeItem('userToken');
+            
+            // Show logout message
+            alert('You have been successfully logged out. Redirecting to home page...');
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
