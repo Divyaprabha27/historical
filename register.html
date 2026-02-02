@@ -60,7 +60,7 @@
         }
         
         .register-header {
-            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+            background: linear-gradient(135deg, var(--primary-maroon), #2A0A0A);
             padding: 2rem 2rem 1.5rem;
             text-align: center;
             position: relative;
@@ -78,6 +78,46 @@
             font-size: 1.5rem;
             color: var(--accent-gold);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .register-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+        
+        /* Override navbar logo styles for register page */
+        .register-header .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+        
+        .register-header .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        .register-header .logo span {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .register-header .logo span {
+            color: var(--accent-gold);
         }
         
         .register-title {
@@ -305,7 +345,7 @@
         }
         
         body.dark-theme .register-header {
-            background: linear-gradient(135deg, var(--accent-gold), #B8933D);
+            background: #333333;
         }
         
         body.dark-theme .form-input {
@@ -378,11 +418,14 @@
         <div class="register-card">
             <!-- Header with Logo -->
             <div class="register-header">
-                <div class="register-logo">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>Historical Guild</span>
+                </a>
                 <h3 class="register-title">Join Our Guild</h3>
-                 </div>
+            </div>
 
             <!-- Registration Form -->
             <div class="register-body">

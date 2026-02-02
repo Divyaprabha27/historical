@@ -19,29 +19,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ===== THEME TOGGLE =====
 function initThemeToggle() {
-    const themeToggle = document.getElementById('themeToggle');
+    console.log('Initializing theme toggle...');
+    const themeToggles = document.querySelectorAll('.theme-toggle');
     const body = document.body;
-    const icon = themeToggle.querySelector('i');
+    
+    console.log('Found theme toggles:', themeToggles.length);
+    console.log('Current theme in localStorage:', localStorage.getItem('theme'));
     
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.classList.add('dark-theme');
-        icon.classList.replace('fa-moon', 'fa-sun');
+        console.log('Applied dark theme from localStorage');
+        // Update all theme toggle icons
+        themeToggles.forEach(toggle => {
+            const icon = toggle.querySelector('i');
+            if (icon) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                console.log('Updated icon to sun');
+            }
+        });
     }
     
-    themeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark-theme');
-        const isDark = body.classList.contains('dark-theme');
-        
-        // Update icon
-        if (isDark) {
-            icon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        }
+    // Add click event to all theme toggle buttons
+    themeToggles.forEach((themeToggle, index) => {
+        console.log(`Adding click listener to theme toggle ${index + 1}`);
+        themeToggle.addEventListener('click', function() {
+            console.log('Theme toggle clicked!');
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            console.log('Is dark theme:', isDark);
+            
+            // Update all theme toggle icons
+            themeToggles.forEach(toggle => {
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    if (isDark) {
+                        icon.classList.replace('fa-moon', 'fa-sun');
+                    } else {
+                        icon.classList.replace('fa-sun', 'fa-moon');
+                    }
+                }
+            });
+            
+            // Save preference
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            console.log('Saved theme preference:', isDark ? 'dark' : 'light');
+        });
     });
 }
 

@@ -26,6 +26,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 100px;
         }
         
         .hero-niche::before {
@@ -46,6 +47,87 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+        }
+        
+        .hero-niche h1,
+        .hero-niche h2,
+        .hero-niche h3 {
+            color: white !important;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .hero-niche h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            display: inline-block !important;
+        }
+        
+        .niche-content h1 {
+            color: white !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            display: inline-block !important;
+        }
+        
+        /* Most specific selector possible */
+        section.hero-niche div.container div.niche-content h1 {
+            color: white !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            display: inline-block !important;
+        }
+        
+        /* Universal selector override */
+        h1 {
+            color: white !important;
+        }
+        
+        /* Style tag override */
+        h1[style] {
+            color: white !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            display: inline-block !important;
+        }
+        
+        .hero-niche p,
+        .hero-niche .lead {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .cta-niche {
+            background: linear-gradient(135deg, var(--primary-maroon), #2A0A0A);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-niche h2 {
+            color: white !important;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-niche .lead {
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin-bottom: 2rem;
+        }
+        
+        .specialty-list i {
+            color: var(--accent-gold) !important;
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            display: inline-block !important;
+            visibility: visible !important;
         }
         
         .niche-content h1 {
@@ -205,17 +287,22 @@
                     <li><a href="events.html" class="nav-link">Events</a></li>
                     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    
                     <li class="header-buttons">
                         <a href="dashboard.html" class="btn btn-secondary">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
-                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                        <a href="login.html" class="btn btn-primary">Sign In</a>
                         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                             <i class="fas fa-moon"></i>
                         </button>
                     </li>
                 </ul>
             </nav>
+            
+            <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
             
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -229,7 +316,7 @@
     <section class="hero-niche">
         <div class="container">
             <div class="niche-content">
-                <h1>Master Historical Crafts & Combat</h1>
+                <div style="color: white !important; background: rgba(0, 0, 0, 0.7) !important; padding: 10px 20px !important; border-radius: 8px !important; display: inline-block !important; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem;">Master Historical Crafts & Combat</div>
                 <p class="lead">Specialized training in authentic period techniques, from medieval swordsmanship to traditional craftsmanship. Join our elite community of dedicated historical practitioners.</p>
                 <div class="hero-buttons">
                     <a href="register.html" class="btn btn-primary btn-lg">Begin Your Journey</a>
@@ -250,7 +337,7 @@
                     </div>
                     <div class="specialty-content">
                         <ul class="specialty-list">
-                            <li><i class="fas fa-sword"></i> Longsword & Sword & Shield</li>
+                            <li><i class="fas fa-check"></i> Longsword & Sword & Shield</li>
                             <li><i class="fas fa-shield-alt"></i> Historical Fencing Styles</li>
                             <li><i class="fas fa-users"></i> Formation Tactics</li>
                             <li><i class="fas fa-medal"></i> Tournament Training</li>
@@ -315,11 +402,7 @@
                         <h4>Scholar Programs</h4>
                         <p>Deep dive into historical research, documentation, and educational presentation.</p>
                     </div>
-                    <div class="immersive-feature">
-                        <i class="fas fa-crown"></i>
-                        <h3>Leadership Roles</h3>
-                        <p>Develop leadership skills through historical command structures and governance.</p>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -328,7 +411,7 @@
     <!-- Niche CTA Section -->
     <section class="cta-niche">
         <div class="container">
-            <h2>Ready to Master Historical Skills?</h2>
+            <h2 style="">Ready to Master Historical Skills?</h2>
             <p class="lead mb-4">
                 Join our specialized community and gain access to expert instructors, 
                 authentic equipment, and a network of passionate historical practitioners.
@@ -348,7 +431,7 @@
                     <div class="logo-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <span>Historical Reenactment Group</span>
+                    <span>Historical Guild</span>
                 </div>
                 <p>Bringing history to life through authentic reenactments and educational programs.</p>
                 <div class="social-links mt-3">
@@ -390,7 +473,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 Historical Reenactment Group. All rights reserved. | 
+            <p>&copy; 2026 Historical Guild. All rights reserved. | 
                 <a href="#" class="text-accent">Privacy Policy</a> | 
                 <a href="#" class="text-accent">Terms of Service</a>
             </p>

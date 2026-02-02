@@ -303,10 +303,142 @@
             z-index: 1001;
             background: var(--primary-maroon);
             color: var(--accent-gold);
-            border: none;
+            border: 2px solid var(--accent-gold);
             padding: 0.75rem;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-toggle:hover {
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+            transform: scale(1.05);
+        }
+        
+        .mobile-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--primary-maroon);
+            color: var(--accent-gold);
+            z-index: 1000;
+            padding: 0 1rem;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Force mobile header to show in mobile view */
+        @media (max-width: 992px) {
+            .mobile-header {
+                display: flex !important;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--accent-gold);
+        }
+        
+        .mobile-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-gold);
+            color: var(--primary-maroon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .mobile-logo-text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: 'MedievalSharp', cursive;
+        }
+        
+        .mobile-header .mobile-toggle {
+            position: static;
+            background: transparent;
+            color: var(--accent-gold);
+            padding: 0.5rem;
+            border: none;
+        }
+        
+        .mobile-header .mobile-toggle:hover {
+            background: rgba(201, 162, 77, 0.2);
+            transform: none;
+        }
+        
+        /* Mobile sidebar backdrop */
+        .sidebar-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .sidebar-backdrop.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+            
+            .mobile-header {
+                display: flex;
+            }
+            
+            .mobile-toggle:not(.mobile-header .mobile-toggle) {
+                display: none;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 768px) {
@@ -321,11 +453,15 @@
             .main-content {
                 margin-left: 0;
                 padding: 1rem;
-                padding-top: 4rem;
+                padding-top: 5rem;
             }
             
-            .mobile-toggle {
-                display: block;
+            .mobile-header {
+                display: flex;
+            }
+            
+            .mobile-toggle:not(.mobile-header .mobile-toggle) {
+                display: none;
             }
             
             .dashboard-header {
@@ -365,10 +501,21 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Mobile Toggle Button -->
-        <button class="mobile-toggle" id="mobileToggle">
-            <i class="fas fa-bars"></i>
-        </button>
+        <!-- Mobile Sidebar Backdrop -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+        
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <div class="mobile-logo">
+                <div class="mobile-logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span class="mobile-logo-text">Historical Guild</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
         
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
@@ -773,9 +920,27 @@
             // Mobile sidebar toggle
             const mobileToggle = document.getElementById('mobileToggle');
             const sidebar = document.getElementById('sidebar');
+            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
             
             mobileToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
+                sidebarBackdrop.classList.toggle('active');
+                
+                // Change hamburger icon to X when sidebar is open
+                const icon = this.querySelector('i');
+                if (sidebar.classList.contains('active')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+            
+            // Close sidebar when clicking backdrop
+            sidebarBackdrop.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                sidebarBackdrop.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.replace('fa-times', 'fa-bars');
             });
             
             // Sidebar navigation
@@ -803,17 +968,23 @@
                     }
                     
                     // Close mobile sidebar
-                    if (window.innerWidth <= 768) {
+                    if (window.innerWidth <= 992) {
                         sidebar.classList.remove('active');
+                        sidebarBackdrop.classList.remove('active');
+                        const icon = mobileToggle.querySelector('i');
+                        icon.classList.replace('fa-times', 'fa-bars');
                     }
                 });
             });
             
             // Close sidebar when clicking outside on mobile
             document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 992) {
                     if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
                         sidebar.classList.remove('active');
+                        sidebarBackdrop.classList.remove('active');
+                        const icon = mobileToggle.querySelector('i');
+                        icon.classList.replace('fa-times', 'fa-bars');
                     }
                 }
             });
