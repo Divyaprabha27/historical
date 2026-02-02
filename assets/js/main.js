@@ -91,15 +91,37 @@ function initMobileMenu() {
         }
     });
     
-    // Close menu when clicking on links
+    // Close menu when clicking on links (but not dropdown toggles)
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            // Don't close menu if it's a dropdown toggle
+            if (link.classList.contains('dropdown-toggle')) {
+                e.preventDefault();
+                // Toggle Bootstrap dropdown manually
+                const dropdown = new bootstrap.Dropdown(link);
+                dropdown.toggle();
+                return;
+            }
+            
             navMenu.classList.remove('active');
             const spans = hamburger.querySelectorAll('span');
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
         });
+    });
+    
+    // Handle dropdown items to close menu after click
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('dropdown-item')) {
+            setTimeout(() => {
+                navMenu.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }, 100);
+        }
     });
     
     // Close menu when clicking outside
