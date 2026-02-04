@@ -75,6 +75,9 @@ function initMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
+    // Highlight current page for Home1 and Home2 items
+    highlightHomeItems();
+    
     hamburger.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         
@@ -96,10 +99,17 @@ function initMobileMenu() {
         link.addEventListener('click', (e) => {
             // Don't close menu if it's a dropdown toggle
             if (link.classList.contains('dropdown-toggle')) {
-                e.preventDefault();
-                // Toggle Bootstrap dropdown manually
-                const dropdown = new bootstrap.Dropdown(link);
-                dropdown.toggle();
+                // Check if we're in mobile/tablet view (hamburger is visible)
+                const hamburger = document.getElementById('hamburger');
+                const isMobileView = window.getComputedStyle(hamburger).display !== 'none';
+                
+                if (isMobileView) {
+                    e.preventDefault();
+                    // Toggle Bootstrap dropdown manually in mobile view
+                    const dropdown = new bootstrap.Dropdown(link);
+                    dropdown.toggle();
+                }
+                // In desktop view, let Bootstrap handle the dropdown naturally
                 return;
             }
             
@@ -134,6 +144,34 @@ function initMobileMenu() {
             spans[2].style.transform = 'none';
         }
     });
+}
+
+// Highlight Home1 and Home2 items based on current page
+function highlightHomeItems() {
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    // Remove active classes from Home items first
+    document.querySelectorAll('.mobile-home-items .nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Add active class to current Home page
+    if (currentPage === 'index.html' || currentPage === '') {
+        // Highlight Home1
+        document.querySelectorAll('.mobile-home-items .nav-link').forEach(link => {
+            if (link.getAttribute('href') === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    } else if (currentPage === 'home2.html') {
+        // Highlight Home2
+        document.querySelectorAll('.mobile-home-items .nav-link').forEach(link => {
+            if (link.getAttribute('href') === 'home2.html') {
+                link.classList.add('active');
+            }
+        });
+    }
 }
 
 // ===== SCROLL ANIMATIONS =====

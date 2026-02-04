@@ -19,6 +19,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu-fixes.css">
     
     <style>
         /* Register Page Specific Styles */
@@ -91,33 +92,34 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
             color: var(--accent-gold);
-            margin-bottom: 1rem;
             justify-content: center;
+            margin: 0 auto;
         }
         
         .register-header .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
+            margin-right: 0.75rem;
             background: var(--accent-gold);
-            color: var(--primary-maroon);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            color: var(--primary-maroon);
+            flex-shrink: 0;
         }
         
-        .register-header .logo span {
-            font-family: 'MedievalSharp', cursive;
-            font-size: 1.8rem;
-            font-weight: bold;
+        body.dark-theme .register-header .logo {
             color: var(--accent-gold);
         }
         
-        body.dark-theme .register-header .logo span {
-            color: var(--accent-gold);
+        body.dark-theme .register-header .logo-icon {
+            background: var(--accent-gold);
         }
         
         .register-title {
@@ -362,6 +364,184 @@
             color: var(--accent-gold);
         }
         
+        /* Terms and Conditions Checkbox */
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(201, 162, 77, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(201, 162, 77, 0.2);
+        }
+        
+        .terms-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: var(--accent-gold);
+        }
+        
+        .terms-label {
+            color: var(--primary-maroon);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .terms-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .terms-link:hover {
+            color: var(--primary-maroon);
+            border-bottom-color: var(--primary-maroon);
+        }
+        
+        body.dark-theme .terms-checkbox {
+            background: rgba(201, 162, 77, 0.1);
+            border-color: rgba(201, 162, 77, 0.3);
+        }
+        
+        body.dark-theme .terms-label {
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .terms-link:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B);
+            color: var(--accent-gold);
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(201, 162, 77, 0.2);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            color: var(--primary-maroon);
+            line-height: 1.6;
+        }
+        
+        .modal-body h4 {
+            color: var(--primary-maroon);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .modal-body h5 {
+            color: var(--primary-maroon);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .modal-body ul {
+            margin: 0.5rem 0 1rem 2rem;
+            padding-left: 1.5rem;
+        }
+        
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #eee;
+            text-align: right;
+            border-radius: 0 0 15px 15px;
+            background: #f8f9fa;
+        }
+        
+        /* Dark theme for modals */
+        body.dark-theme .modal-content {
+            background: linear-gradient(145deg, #3A3530, #2A2520);
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .modal-header {
+            background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B);
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .modal-body {
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .modal-body h4,
+        body.dark-theme .modal-body h5 {
+            color: var(--accent-gold);
+        }
+        
+        body.dark-theme .modal-footer {
+            background: rgba(0, 0, 0, 0.3);
+            border-top-color: rgba(201, 162, 77, 0.2);
+        }
+        
         body.dark-theme .social-btn {
             background: rgba(201, 162, 77, 0.1);
             border-color: rgba(201, 162, 77, 0.4);
@@ -458,6 +638,16 @@
                         </div>
                     </div>
 
+                    <!-- Terms and Conditions -->
+                    <div class="form-group mb-4">
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                            <label for="termsAgree" class="terms-label">
+                                I agree to the <a href="#" class="terms-link" onclick="showTermsModal(); return false;">Terms and Conditions</a> and <a href="#" class="terms-link" onclick="showPrivacyModal(); return false;">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+
                     <!-- Register Button -->
                     <button type="submit" class="register-btn">Create Account</button>
                 </form>
@@ -530,40 +720,49 @@
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const termsAgree = document.getElementById('termsAgree').checked;
 
             // Reset error states
             document.querySelectorAll('.form-input').forEach(input => {
                 input.style.borderColor = 'rgba(201, 162, 77, 0.3)';
             });
 
-            let isValid = true;
-
             // Validate full name
             if (fullName.length < 2) {
                 document.getElementById('fullName').style.borderColor = '#dc3545';
-                isValid = false;
+                document.getElementById('fullName').focus();
+                return false;
             }
 
             // Validate email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 document.getElementById('email').style.borderColor = '#dc3545';
-                isValid = false;
+                document.getElementById('email').focus();
+                return false;
             }
 
             // Validate password
-            if (password.length < 6) {
+            if (password.length < 8) {
                 document.getElementById('password').style.borderColor = '#dc3545';
-                isValid = false;
+                document.getElementById('password').focus();
+                return false;
             }
 
             // Validate password confirmation
             if (password !== confirmPassword) {
                 document.getElementById('confirmPassword').style.borderColor = '#dc3545';
-                isValid = false;
+                document.getElementById('confirmPassword').focus();
+                return false;
             }
 
-            return isValid;
+            // Validate terms agreement
+            if (!termsAgree) {
+                alert('You must agree to the Terms and Conditions and Privacy Policy to register.');
+                return false;
+            }
+
+            return true;
         }
 
         // Handle Registration
@@ -618,8 +817,118 @@
 
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize theme toggle
-            initThemeToggle();
+            // Show Terms Modal
+        function showTermsModal() {
+            const modalHtml = `
+                <div class="modal-overlay" id="termsModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Terms and Conditions</h3>
+                            <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Historical Reenactment Group - Terms of Service</h4>
+                            <p><strong>Last Updated: February 2026</strong></p>
+                            
+                            <h5>1. Acceptance of Terms</h5>
+                            <p>By registering for the Historical Reenactment Group, you agree to comply with and be bound by these Terms and Conditions.</p>
+                            
+                            <h5>2. Membership Requirements</h5>
+                            <ul>
+                                <li>Must be at least 18 years of age</li>
+                                <li>Must have a genuine interest in historical reenactment</li>
+                                <li>Must agree to follow safety protocols during events</li>
+                                <li>Must respect historical accuracy guidelines</li>
+                            </ul>
+                            
+                            <h5>3. Code of Conduct</h5>
+                            <p>All members are expected to maintain respectful behavior, follow historical authenticity guidelines, and promote educational values during all reenactment activities.</p>
+                            
+                            <h5>4. Safety and Liability</h5>
+                            <p>Members participate at their own risk. The Historical Reenactment Group is not liable for injuries sustained during events, provided all safety protocols are followed.</p>
+                            
+                            <h5>5. Privacy and Data</h5>
+                            <p>Your personal information will be handled according to our Privacy Policy. We may use your data for event coordination and communication purposes.</p>
+                            
+                            <h5>6. Membership Fees</h5>
+                            <p>Annual membership fees are non-refundable. Memberships may be terminated for violation of these terms.</p>
+                            
+                            <h5>7. Contact Information</h5>
+                            <p>For questions about these terms, please contact us at: info@historicalguild.com</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" onclick="closeModal('termsModal')">Close</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
+        
+        // Show Privacy Modal
+        function showPrivacyModal() {
+            const modalHtml = `
+                <div class="modal-overlay" id="privacyModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Privacy Policy</h3>
+                            <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Historical Reenactment Group - Privacy Policy</h4>
+                            <p><strong>Last Updated: February 2026</strong></p>
+                            
+                            <h5>1. Information We Collect</h5>
+                            <p>We collect personal information including name, email address, and contact details when you register for our services.</p>
+                            
+                            <h5>2. How We Use Your Information</h5>
+                            <ul>
+                                <li>To process your membership application</li>
+                                <li>To communicate about events and activities</li>
+                                <li>To coordinate reenactment participation</li>
+                                <li>To improve our services</li>
+                            </ul>
+                            
+                            <h5>3. Data Security</h5>
+                            <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, or disclosure.</p>
+                            
+                            <h5>4. Information Sharing</h5>
+                            <p>We do not sell, trade, or transfer your personal information to third parties without your consent, except as required by law.</p>
+                            
+                            <h5>5. Cookies and Tracking</h5>
+                            <p>Our website may use cookies to enhance your experience and track usage patterns for analytics purposes.</p>
+                            
+                            <h5>6. Your Rights</h5>
+                            <p>You have the right to access, update, or delete your personal information at any time by contacting us.</p>
+                            
+                            <h5>7. Contact Us</h5>
+                            <p>For privacy-related questions, please email: privacy@historicalguild.com</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" onclick="closeModal('privacyModal')">Close</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
+        
+        // Close Modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        // Close modal when clicking overlay
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.remove();
+            }
+        });
 
             // Form submission
             document.getElementById('registerForm').addEventListener('submit', handleRegistration);

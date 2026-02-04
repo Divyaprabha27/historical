@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu-fixes.css">
     
     <style>
         /* Niche Landing Styles */
@@ -143,6 +144,22 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+        }
+        
+        /* Tablet view - make cards full width */
+        @media (max-width: 1024px) {
+            .specialties-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Mobile view - make cards full width */
+        @media (max-width: 768px) {
+            .specialties-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
         
         .specialty-card {
@@ -281,6 +298,13 @@
                             <li><a class="dropdown-item" href="index.html">Home1</a></li>
                             <li><a class="dropdown-item" href="home2.html">Home2</a></li>
                         </ul>
+                    </li>
+                    <!-- Mobile/Tab view separate Home items -->
+                    <li class="mobile-home-items" style="display: none;">
+                        <a href="index.html" class="nav-link">Home1</a>
+                    </li>
+                    <li class="mobile-home-items" style="display: none;">
+                        <a href="home2.html" class="nav-link">Home2</a>
                     </li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="members.html" class="nav-link">Members</a></li>

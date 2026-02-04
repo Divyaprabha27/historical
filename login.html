@@ -19,6 +19,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu-fixes.css">
     
     <style>
         /* Login Page Specific Styles */
@@ -98,51 +99,56 @@
         body.dark-theme .login-title {
             color: var(--accent-gold);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, var(--primary-maroon), #2A0A0A);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
         }
         
         /* Override navbar logo styles for login page */
         .login-header {
             background: linear-gradient(135deg, var(--primary-maroon), #2A0A0A);
             padding: 2rem;
-            border-radius: 15px 15px 0 0;
             text-align: center;
+            position: relative;
         }
         
         .login-header .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
             color: var(--accent-gold);
-            margin-bottom: 1rem;
             justify-content: center;
+            margin: 0 auto;
         }
         
         .login-header .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
+            margin-right: 0.75rem;
             background: var(--accent-gold);
-            color: var(--primary-maroon);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
-        }
-        
-        .login-header .logo span {
-            font-family: 'MedievalSharp', cursive;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--accent-gold);
+            font-size: 1rem;
+            color: var(--primary-maroon);
+            flex-shrink: 0;
         }
         
         body.dark-theme .login-header {
             background: linear-gradient(135deg, #1A0A0A, #0A0505);
         }
         
-        body.dark-theme .login-header .logo span {
+        body.dark-theme .login-header .logo {
             color: var(--accent-gold);
+        }
+        
+        body.dark-theme .login-header .logo-icon {
+            background: var(--accent-gold);
         }
         
         .login-subtitle {

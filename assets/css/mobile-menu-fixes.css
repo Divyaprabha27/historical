@@ -1,0 +1,495 @@
+/* Dark Theme Mobile Menu Fixes */
+
+/* Desktop dropdown menu fixes */
+@media (min-width: 993px) {
+    .nav-item.dropdown {
+        display: block !important;
+    }
+    
+    .mobile-home-items {
+        display: none !important;
+    }
+    
+    /* Ensure dropdown menu is visible and positioned correctly */
+    .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+    }
+    
+    .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    /* Fix dropdown toggle behavior in desktop */
+    .dropdown-toggle {
+        pointer-events: auto !important;
+    }
+    
+    .dropdown-toggle:hover {
+        background: rgba(201, 162, 77, 0.3) !important;
+    }
+}
+
+/* Dashboard logo and website name hiding when hamburger appears */
+@media (max-width: 1024px) {
+    .dashboard-container .mobile-logo {
+        display: none !important;
+    }
+    
+    .dashboard-container .mobile-logo-text {
+        display: none !important;
+    }
+    
+    .dashboard-container .mobile-logo-icon {
+        display: none !important;
+    }
+    
+    /* Hide sidebar by default at 1024px */
+    .dashboard-container .sidebar {
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
+    }
+    
+    .dashboard-container .sidebar.active {
+        transform: translateX(0) !important;
+    }
+    
+    /* Show sidebar backdrop when active */
+    .dashboard-container .sidebar-backdrop {
+        display: none !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
+    }
+    
+    .dashboard-container .sidebar-backdrop.active {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    
+    /* Fix main content overlapping with navbar */
+    .dashboard-container .main-content {
+        padding-top: 80px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Move hamburger menu to right side */
+    .dashboard-container .mobile-header {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center;
+        padding: 1rem;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1001 !important;
+        background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B) !important;
+    }
+    
+    .dashboard-container .mobile-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent-gold);
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem;
+        cursor: pointer;
+        color: var(--primary-maroon);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .dashboard-container .mobile-toggle:hover {
+        background: rgba(201, 162, 77, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+/* Fix main pages hamburger menu at 1024px to show Home1 and Home2 */
+@media (max-width: 1024px) {
+    /* Show hamburger menu at 1024px */
+    .hamburger {
+        display: flex !important;
+    }
+    
+    /* Show separate Home items in mobile/tab view */
+    .mobile-home-items {
+        display: block !important;
+    }
+    
+    .nav-item.dropdown {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        right: 1rem;
+        top: 80px;
+        flex-direction: column;
+        background: white;
+        width: 280px;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        padding: 1rem 0;
+        z-index: 9999;
+        gap: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    /* Style mobile home items at 1024px */
+    .mobile-home-items .nav-link {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        color: var(--primary-maroon);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+    
+    .mobile-home-items .nav-link:hover {
+        background: rgba(201, 162, 77, 0.1);
+        color: var(--primary-maroon);
+        transform: translateX(4px);
+        border-left-color: var(--accent-gold);
+    }
+    
+    .mobile-home-items .nav-link.active {
+        background: rgba(201, 162, 77, 0.2);
+        color: var(--primary-maroon);
+        font-weight: bold;
+        border-left-color: var(--accent-gold);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container .mobile-logo {
+        display: none !important;
+    }
+    
+    .dashboard-container .mobile-logo-text {
+        display: none !important;
+    }
+    
+    .dashboard-container .mobile-logo-icon {
+        display: none !important;
+    }
+    
+    /* Hide sidebar by default at 768px */
+    .dashboard-container .sidebar {
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
+    }
+    
+    .dashboard-container .sidebar.active {
+        transform: translateX(0) !important;
+    }
+    
+    /* Show sidebar backdrop when active */
+    .dashboard-container .sidebar-backdrop {
+        display: none !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
+    }
+    
+    .dashboard-container .sidebar-backdrop.active {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    
+    /* Fix main content overlapping with navbar */
+    .dashboard-container .main-content {
+        padding-top: 80px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Move hamburger menu to right side */
+    .dashboard-container .mobile-header {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center;
+        padding: 1rem;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1001 !important;
+        background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B) !important;
+    }
+    
+    .dashboard-container .mobile-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent-gold);
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem;
+        cursor: pointer;
+        color: var(--primary-maroon);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .dashboard-container .mobile-toggle:hover {
+        background: rgba(201, 162, 77, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+/* Dark theme mobile menu styles for tablet breakpoint (992px) */
+@media (max-width: 992px) {
+    body.dark-theme .nav-menu {
+        background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B) !important;
+        border: 1px solid var(--accent-gold) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    body.dark-theme .nav-menu .nav-link {
+        color: var(--accent-gold) !important;
+        background: transparent !important;
+    }
+    
+    body.dark-theme .nav-menu .nav-link:hover {
+        background: rgba(201, 162, 77, 0.2) !important;
+        color: var(--accent-gold) !important;
+        transform: translateX(4px) !important;
+    }
+    
+    body.dark-theme .nav-menu .nav-link.active {
+        background: rgba(201, 162, 77, 0.3) !important;
+        color: var(--accent-gold) !important;
+        font-weight: bold !important;
+    }
+}
+
+/* Dark theme mobile menu styles for mobile breakpoint (768px) */
+@media (max-width: 768px) {
+    body.dark-theme .nav-menu {
+        background: linear-gradient(135deg, var(--primary-maroon), #3B0B0B) !important;
+        border: 1px solid var(--accent-gold) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    body.dark-theme .nav-menu .nav-link {
+        color: var(--accent-gold) !important;
+        background: transparent !important;
+    }
+    
+    body.dark-theme .nav-menu .nav-link:hover {
+        background: rgba(201, 162, 77, 0.2) !important;
+        color: var(--accent-gold) !important;
+        transform: translateX(4px) !important;
+    }
+    
+    body.dark-theme .nav-menu .nav-link.active {
+        background: rgba(201, 162, 77, 0.3) !important;
+        color: var(--accent-gold) !important;
+        font-weight: bold !important;
+    }
+}
+
+/* Parallel Learn More Buttons Alignment for Upcoming Events */
+.upcoming-events .row {
+    align-items: flex-end;
+}
+
+.upcoming-events .card-3d {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.upcoming-events .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.upcoming-events .card-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.upcoming-events .card-buttons .btn {
+    min-width: 120px;
+    text-align: center;
+}
+
+/* Ensure all cards have the same height */
+.upcoming-events .row {
+    display: flex;
+    align-items: stretch;
+}
+
+.upcoming-events .col-md-6,
+.upcoming-events .col-lg-4 {
+    display: flex;
+}
+
+/* Dark theme for card buttons */
+body.dark-theme .upcoming-events .card-buttons .btn-secondary {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+body.dark-theme .upcoming-events .card-buttons .btn-secondary:hover {
+    background: var(--accent-gold);
+    color: var(--primary-maroon);
+}
+
+/* Responsive adjustments for parallel buttons */
+@media (max-width: 992px) {
+    /* Tablet view - ensure buttons remain parallel */
+    .upcoming-events .row {
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+    
+    .upcoming-events .col-md-6 {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+        margin-bottom: 2rem;
+    }
+    
+    .upcoming-events .card-3d {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .upcoming-events .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .upcoming-events .card-buttons {
+        margin-top: auto;
+        padding-top: 1.5rem;
+    }
+    
+    .upcoming-events .card-buttons .btn {
+        min-width: 110px;
+        font-size: 0.85rem;
+        padding: 0.6rem 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile view - stack cards but keep buttons aligned within each card */
+    .upcoming-events .row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .upcoming-events .col-md-6,
+    .upcoming-events .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 340px;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .upcoming-events .card-3d {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .upcoming-events .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1.2rem;
+    }
+    
+    .upcoming-events .card-buttons {
+        margin-top: auto;
+        padding-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .upcoming-events .card-buttons .btn {
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Small mobile view */
+    .upcoming-events .col-md-6,
+    .upcoming-events .col-lg-4 {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    .upcoming-events .card-buttons .btn {
+        min-width: 90px;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .upcoming-events .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Ensure smooth transitions and hover effects for all screen sizes */
+.upcoming-events .card-buttons .btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upcoming-events .card-buttons .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.upcoming-events .card-buttons .btn:hover::before {
+    left: 100%;
+}
+
+.upcoming-events .card-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(201, 162, 77, 0.3);
+}
