@@ -24,6 +24,37 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mobile-menu-fixes.css">
+    
+    <!-- Custom Styles for Gallery Page -->
+    <style>
+        #galleryFilters .btn-primary.active {
+            background-color: #3E0C0C !important;
+            border-color: #3E0C0C !important;
+        }
+        
+        #galleryFilters .btn-primary.active:hover {
+            background-color: #2A0808 !important;
+            border-color: #2A0808 !important;
+        }
+        
+        /* Make all gallery images the same size */
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: 1rem !important;
+        }
+        
+        .gallery-item {
+            grid-column: span 1 !important;
+            grid-row: span 1 !important;
+            aspect-ratio: 1 !important;
+        }
+        
+        .gallery-image {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -394,21 +425,21 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <h4>How to Submit</h4>
-                        <ul class="text-start">
-                            <li>Email photos to gallery@historicalgroup.com</li>
-                            <li>Include event name and date</li>
-                            <li>High-resolution images preferred</li>
-                            <li>You retain all photo rights</li>
-                        </ul>
+                        <p class="text-center">
+                            Email photos to gallery@historicalgroup.com<br>
+                            Include event name and date<br>
+                            High-resolution images preferred<br>
+                            You retain all photo rights
+                        </p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <h4>Photo Guidelines</h4>
-                        <ul class="text-start">
-                            <li>Focus on historical accuracy</li>
-                            <li>Capture action and emotion</li>
-                            <li>Show period details and costumes</li>
-                            <li>Group shots and individual portraits welcome</li>
-                        </ul>
+                        <p class="text-center">
+                            Focus on historical accuracy<br>
+                            Capture action and emotion<br>
+                            Show period details and costumes<br>
+                            Group shots and individual portraits welcome
+                        </p>
                     </div>
                 </div>
                 <a href="#" class="btn btn-primary btn-lg">Submit Your Photos</a>
