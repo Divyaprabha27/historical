@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Arrivals - Historical Reenactment Group</title>
     <meta name="description" content="Discover our latest historical reenactment gear, costumes, and equipment">
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='shield-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23C9A24D'/%3E%3Cstop offset='100%25' style='stop-color:%235B1B1B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2 L4 8 L4 16 C4 22 8 26 16 30 C24 26 28 22 28 16 L28 8 Z' fill='url(%23shield-gradient)' stroke='%23C9A24D' stroke-width='1'/%3E%3Cpath d='M12 12 L20 12 M16 8 L16 16 M12 20 L20 20' stroke='%23C9A24D' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='shield-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23C9A24D'/%3E%3Cstop offset='100%25' style='stop-color:%235B1B1B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2 L4 8 L4 16 C4 22 8 26 16 30 C24 26 28 22 28 16 L28 8 Z' fill='url(%23shield-gradient)' stroke='%23C9A24D' stroke-width='1'/%3E%3Cpath d='M12 12 L20 12 M16 8 L16 16 M12 20 L20 20' stroke='%23C9A24D' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-    
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='shield-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23C9A24D'/%3E%3Cstop offset='100%25' style='stop-color:%235B1B1B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2 L4 8 L4 16 C4 22 8 26 16 30 C24 26 28 22 28 16 L28 8 Z' fill='url(%23shield-gradient)' stroke='%23C9A24D' stroke-width='1'/%3E%3Cpath d='M12 12 L20 12 M16 8 L16 16 M12 20 L20 20' stroke='%23C9A24D' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='shield-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23C9A24D'/%3E%3Cstop offset='100%25' style='stop-color:%235B1B1B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2 L4 8 L4 16 C4 22 8 26 16 30 C24 26 28 22 28 16 L28 8 Z' fill='url(%23shield-gradient)' stroke='%23C9A24D' stroke-width='1'/%3E%3Cpath d='M12 12 L20 12 M16 8 L16 16 M12 20 L20 20' stroke='%23C9A24D' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Georgia:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mobile-menu-fixes.css">
-    
+
     <style>
         /* New Arrivals Specific Styles */
         .arrivals-grid {
@@ -33,7 +37,7 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-        
+
         .arrival-item {
             background: white;
             border-radius: 15px;
@@ -43,44 +47,44 @@
             position: relative;
             cursor: pointer;
         }
-        
+
         .arrival-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
-        
+
         .arrival-item.featured {
             grid-column: span 2;
             grid-row: span 2;
         }
-        
+
         .arrival-item.tall {
             grid-row: span 2;
         }
-        
+
         .arrival-item.wide {
             grid-column: span 2;
         }
-        
+
         .arrival-image {
             width: 100%;
             height: 250px;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .arrival-item.featured .arrival-image {
             height: 400px;
         }
-        
+
         .arrival-item.tall .arrival-image {
             height: 500px;
         }
-        
+
         .arrival-item:hover .arrival-image {
             transform: scale(1.05);
         }
-        
+
         .arrival-overlay {
             position: absolute;
             top: 0;
@@ -96,11 +100,11 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .arrival-item:hover .arrival-overlay {
             opacity: 1;
         }
-        
+
         .arrival-badge {
             position: absolute;
             top: 1rem;
@@ -113,41 +117,41 @@
             font-size: 0.8rem;
             z-index: 2;
         }
-        
+
         .arrival-badge.new {
             background: #28a745;
             color: white;
         }
-        
+
         .arrival-badge.limited {
             background: #dc3545;
             color: white;
         }
-        
+
         .arrival-content {
             padding: 1.5rem;
         }
-        
+
         .arrival-title {
             font-size: 1.3rem;
             font-weight: bold;
             color: var(--primary-maroon);
             margin-bottom: 0.5rem;
         }
-        
+
         .arrival-description {
             color: #666;
             margin-bottom: 1rem;
             font-size: 0.9rem;
         }
-        
+
         .arrival-price {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--accent-gold);
             margin-bottom: 1rem;
         }
-        
+
         .arrival-meta {
             display: flex;
             justify-content: space-between;
@@ -156,16 +160,16 @@
             font-size: 0.8rem;
             color: #888;
         }
-        
+
         .arrival-rating {
             color: #ffc107;
         }
-        
+
         .arrival-actions {
             display: flex;
             gap: 0.5rem;
         }
-        
+
         .arrival-btn {
             flex: 1;
             padding: 0.75rem;
@@ -177,42 +181,42 @@
             text-align: center;
             text-decoration: none;
         }
-        
+
         .arrival-btn.primary {
             background: linear-gradient(135deg, var(--accent-gold), #B8933D);
             color: var(--primary-maroon);
         }
-        
+
         .arrival-btn.primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(201, 162, 77, 0.3);
         }
-        
+
         .arrival-btn.secondary {
             background: transparent;
             color: var(--primary-maroon);
             border: 2px solid var(--primary-maroon);
         }
-        
+
         .arrival-btn.secondary:hover {
             background: var(--primary-maroon);
             color: white;
         }
-        
+
         /* Filter Section */
         .filter-section {
             background: var(--bg-parchment);
             padding: 2rem 0;
             margin-bottom: 3rem;
         }
-        
+
         .filter-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
         }
-        
+
         .filter-btn {
             padding: 0.75rem 1.5rem;
             border: 2px solid var(--accent-gold);
@@ -223,68 +227,69 @@
             transition: all 0.3s ease;
             font-weight: 600;
         }
-        
+
         .filter-btn:hover,
         .filter-btn.active {
             background: var(--accent-gold);
             color: var(--primary-maroon);
         }
-        
+
         /* Dark Mode */
         body.dark-theme .arrival-item {
             background: linear-gradient(145deg, #3A3530, #2A2520);
         }
-        
+
         body.dark-theme .arrival-title {
             color: var(--accent-gold);
         }
-        
+
         body.dark-theme .arrival-description {
             color: #ccc;
         }
-        
+
         body.dark-theme .filter-section {
             background: var(--bg-parchment-dark);
         }
-        
+
         body.dark-theme .filter-btn {
             background: rgba(201, 162, 77, 0.1);
             border-color: var(--accent-gold);
             color: var(--accent-gold);
         }
-        
+
         body.dark-theme .filter-btn:hover,
         body.dark-theme .filter-btn.active {
             background: var(--accent-gold);
             color: var(--primary-maroon);
         }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
             .arrivals-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .arrival-item.featured,
             .arrival-item.wide {
                 grid-column: span 1;
             }
-            
+
             .arrival-item.tall {
                 grid-row: span 1;
             }
-            
+
             .arrival-item.featured .arrival-image {
                 height: 300px;
             }
-            
+
             .arrival-item.tall .arrival-image {
                 height: 250px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -295,11 +300,12 @@
                 </div>
                 <span>Historical Reenactment Group</span>
             </a>
-            
+
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="nav-link dropdown-toggle" id="homeDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Home
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="homeDropdown">
@@ -323,15 +329,17 @@
                     </li>
                 </ul>
             </nav>
-            
-            <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="header-actions">
+                <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </header>
@@ -367,7 +375,8 @@
                 <!-- Featured Item -->
                 <div class="arrival-item featured animate-on-scroll" data-category="armor">
                     <span class="arrival-badge new">NEW</span>
-                    <img src="https://picsum.photos/seed/medieval-knight-armor/600/400.jpg" class="arrival-image" alt="Medieval Knight Armor">
+                    <img src="https://picsum.photos/seed/medieval-knight-armor/600/400.jpg" class="arrival-image"
+                        alt="Medieval Knight Armor">
                     <div class="arrival-overlay">
                         <h4>Complete Knight Armor Set</h4>
                         <p>Authentic 15th century full plate armor with custom fitting</p>
@@ -378,7 +387,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Complete Knight Armor Set</h3>
-                        <p class="arrival-description">Authentic 15th century full plate armor including helmet, breastplate, gauntlets, and greaves. Custom fitted to your measurements.</p>
+                        <p class="arrival-description">Authentic 15th century full plate armor including helmet,
+                            breastplate, gauntlets, and greaves. Custom fitted to your measurements.</p>
                         <div class="arrival-price">$2,499.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -401,7 +411,8 @@
                 <!-- Medieval Sword -->
                 <div class="arrival-item animate-on-scroll" data-category="weapons">
                     <span class="arrival-badge limited">LIMITED</span>
-                    <img src="https://picsum.photos/seed/medieval-sword/400/300.jpg" class="arrival-image" alt="Medieval Sword">
+                    <img src="https://picsum.photos/seed/medieval-sword/400/300.jpg" class="arrival-image"
+                        alt="Medieval Sword">
                     <div class="arrival-overlay">
                         <h4>Bastard Sword</h4>
                         <p>Hand-forged medieval sword with leather grip</p>
@@ -412,7 +423,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Bastard Sword</h3>
-                        <p class="arrival-description">Hand-forged high carbon steel blade with authentic leather-wrapped grip and polished pommel.</p>
+                        <p class="arrival-description">Hand-forged high carbon steel blade with authentic
+                            leather-wrapped grip and polished pommel.</p>
                         <div class="arrival-price">$899.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -435,7 +447,8 @@
                 <!-- Viking Shield -->
                 <div class="arrival-item animate-on-scroll" data-category="armor">
                     <span class="arrival-badge new">NEW</span>
-                    <img src="https://picsum.photos/seed/viking-shield/400/300.jpg" class="arrival-image" alt="Viking Shield">
+                    <img src="https://picsum.photos/seed/viking-shield/400/300.jpg" class="arrival-image"
+                        alt="Viking Shield">
                     <div class="arrival-overlay">
                         <h4>Viking Round Shield</h4>
                         <p>Traditional Norse shield with authentic wood construction</p>
@@ -446,7 +459,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Viking Round Shield</h3>
-                        <p class="arrival-description">Authentic Norse round shield with hand-painted design and leather rim. 24" diameter, historically accurate.</p>
+                        <p class="arrival-description">Authentic Norse round shield with hand-painted design and leather
+                            rim. 24" diameter, historically accurate.</p>
                         <div class="arrival-price">$349.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -469,7 +483,8 @@
                 <!-- Medieval Tunic -->
                 <div class="arrival-item wide animate-on-scroll" data-category="clothing">
                     <span class="arrival-badge new">NEW</span>
-                    <img src="https://picsum.photos/seed/medieval-tunic/600/300.jpg" class="arrival-image" alt="Medieval Tunic">
+                    <img src="https://picsum.photos/seed/medieval-tunic/600/300.jpg" class="arrival-image"
+                        alt="Medieval Tunic">
                     <div class="arrival-overlay">
                         <h4>Medieval Noble Tunic</h4>
                         <p>Luxurious velvet tunic with embroidered family crest</p>
@@ -480,7 +495,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Medieval Noble Tunic</h3>
-                        <p class="arrival-description">Luxurious velvet tunic with gold embroidery and custom family crest. Available in multiple colors and sizes.</p>
+                        <p class="arrival-description">Luxurious velvet tunic with gold embroidery and custom family
+                            crest. Available in multiple colors and sizes.</p>
                         <div class="arrival-price">$189.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -502,7 +518,8 @@
 
                 <!-- Roman Helmet -->
                 <div class="arrival-item animate-on-scroll" data-category="armor">
-                    <img src="https://picsum.photos/seed/roman-helmet/400/300.jpg" class="arrival-image" alt="Roman Helmet">
+                    <img src="https://picsum.photos/seed/roman-helmet/400/300.jpg" class="arrival-image"
+                        alt="Roman Helmet">
                     <div class="arrival-overlay">
                         <h4>Roman Centurion Helmet</h4>
                         <p>Authentic Imperial Roman helmet with crest</p>
@@ -513,7 +530,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Roman Centurion Helmet</h3>
-                        <p class="arrival-description">Imperial Roman helmet with authentic red crest and brass fittings. Museum quality reproduction.</p>
+                        <p class="arrival-description">Imperial Roman helmet with authentic red crest and brass
+                            fittings. Museum quality reproduction.</p>
                         <div class="arrival-price">$599.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -536,7 +554,8 @@
                 <!-- Archer Bow -->
                 <div class="arrival-item tall animate-on-scroll" data-category="weapons">
                     <span class="arrival-badge limited">LIMITED</span>
-                    <img src="https://picsum.photos/seed/english-longbow/400/600.jpg" class="arrival-image" alt="English Longbow">
+                    <img src="https://picsum.photos/seed/english-longbow/400/600.jpg" class="arrival-image"
+                        alt="English Longbow">
                     <div class="arrival-overlay">
                         <h4>English Longbow</h4>
                         <p>Traditional yew wood longbow with linen string</p>
@@ -547,7 +566,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">English Longbow</h3>
-                        <p class="arrival-description">Traditional yew wood longbow with linen string. 72" draw weight, perfect for historical archery.</p>
+                        <p class="arrival-description">Traditional yew wood longbow with linen string. 72" draw weight,
+                            perfect for historical archery.</p>
                         <div class="arrival-price">$449.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -569,7 +589,8 @@
 
                 <!-- Medieval Boots -->
                 <div class="arrival-item animate-on-scroll" data-category="clothing">
-                    <img src="https://picsum.photos/seed/medieval-boots/400/300.jpg" class="arrival-image" alt="Medieval Boots">
+                    <img src="https://picsum.photos/seed/medieval-boots/400/300.jpg" class="arrival-image"
+                        alt="Medieval Boots">
                     <div class="arrival-overlay">
                         <h4>Medieval Leather Boots</h4>
                         <p>Handcrafted leather boots with period-appropriate design</p>
@@ -580,7 +601,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Medieval Leather Boots</h3>
-                        <p class="arrival-description">Handcrafted leather boots with period-appropriate design. Available in various sizes and colors.</p>
+                        <p class="arrival-description">Handcrafted leather boots with period-appropriate design.
+                            Available in various sizes and colors.</p>
                         <div class="arrival-price">$129.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -603,7 +625,8 @@
                 <!-- Renaissance Cloak -->
                 <div class="arrival-item animate-on-scroll" data-category="clothing">
                     <span class="arrival-badge new">NEW</span>
-                    <img src="https://picsum.photos/seed/renaissance-cloak/400/300.jpg" class="arrival-image" alt="Renaissance Cloak">
+                    <img src="https://picsum.photos/seed/renaissance-cloak/400/300.jpg" class="arrival-image"
+                        alt="Renaissance Cloak">
                     <div class="arrival-overlay">
                         <h4>Renaissance Noble Cloak</h4>
                         <p>Luxurious wool cloak with silver embroidery</p>
@@ -614,7 +637,8 @@
                     </div>
                     <div class="arrival-content">
                         <h3 class="arrival-title">Renaissance Noble Cloak</h3>
-                        <p class="arrival-description">Luxurious wool cloak with silver embroidery and silk lining. Perfect for Renaissance fairs.</p>
+                        <p class="arrival-description">Luxurious wool cloak with silver embroidery and silk lining.
+                            Perfect for Renaissance fairs.</p>
                         <div class="arrival-price">$229.00</div>
                         <div class="arrival-meta">
                             <span class="arrival-rating">
@@ -655,7 +679,7 @@
                     <a href="#" class="text-accent"><i class="fab fa-twitter fa-lg"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
@@ -665,7 +689,7 @@
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Support</h3>
                 <ul class="footer-links">
@@ -675,7 +699,7 @@
                     <li><a href="#">Sponsorship</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Newsletter</h3>
                 <p>Subscribe to receive updates about upcoming events and historical insights.</p>
@@ -685,10 +709,10 @@
                 </form>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
-            <p>&copy; 2026 Historical Guild. All rights reserved. | 
-                <a href="#" class="text-accent">Privacy Policy</a> | 
+            <p>&copy; 2026 Historical Guild. All rights reserved. |
+                <a href="#" class="text-accent">Privacy Policy</a> |
                 <a href="#" class="text-accent">Terms of Service</a>
             </p>
         </div>
@@ -703,22 +727,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
-    
+
     <script>
         // Filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const arrivalItems = document.querySelectorAll('.arrival-item');
-            
+
             filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     // Add active class to clicked button
                     this.classList.add('active');
-                    
+
                     const category = this.dataset.category;
-                    
+
                     arrivalItems.forEach(item => {
                         if (category === 'all' || item.dataset.category === category) {
                             item.style.display = 'block';
@@ -730,19 +754,19 @@
                     });
                 });
             });
-            
+
             // Add to cart functionality
             document.querySelectorAll('.arrival-btn.primary').forEach(button => {
-                button.addEventListener('click', function(e) {
+                button.addEventListener('click', function (e) {
                     e.preventDefault();
                     const itemName = this.closest('.arrival-item').querySelector('.arrival-title').textContent;
                     alert(`${itemName} has been added to your cart!`);
                 });
             });
-            
+
             // View details functionality
             document.querySelectorAll('.arrival-btn.secondary').forEach(button => {
-                button.addEventListener('click', function(e) {
+                button.addEventListener('click', function (e) {
                     e.preventDefault();
                     const itemName = this.closest('.arrival-item').querySelector('.arrival-title').textContent;
                     alert(`Viewing details for ${itemName}`);
@@ -751,4 +775,5 @@
         });
     </script>
 </body>
+
 </html>

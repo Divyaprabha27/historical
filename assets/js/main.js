@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initSmoothScrolling();
     initParallaxEffects();
-    init3DCardEffects();
     initLoadingStates();
 });
 
@@ -478,31 +477,6 @@ function initParallaxEffects() {
             const speed = 0.5;
             const yPos = -(scrolled * speed);
             element.style.transform = `translateY(${yPos}px)`;
-        });
-    });
-}
-
-// ===== 3D CARD EFFECTS =====
-function init3DCardEffects() {
-    const cards = document.querySelectorAll('.card-3d, .member-card, .gallery-item');
-    
-    cards.forEach(card => {
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
         });
     });
 }
